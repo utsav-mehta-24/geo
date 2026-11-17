@@ -8,7 +8,7 @@ AFTER state:
     personalized to the query, and re-ranks. Only that one page changes.
 
 For real-time rendering (any query, per request) run `server.py` instead.
-Usage:  python demo.py ["your query"]
+Usage:  python demo.py ["your query"] [--ai]
 """
 import json
 import sys
@@ -20,11 +20,12 @@ for stream in (sys.stdout, sys.stderr):
     if hasattr(stream, "reconfigure"):
         stream.reconfigure(encoding="utf-8", errors="replace")
 
-QUERY = (" ".join(sys.argv[1:]).strip()
+USE_AI = "--ai" in sys.argv          # offline + reproducible by default
+QUERY = (" ".join(a for a in sys.argv[1:] if a != "--ai").strip()
          or "I want hot chocolate with my family and need an experience")
 OUT = HERE / "out"
 
-report, pages_after = run(QUERY)
+report, pages_after = run(QUERY, use_ai=USE_AI)
 
 for name, pages in (("before", BEFORE_PAGES), ("after", pages_after)):
     (OUT / name).mkdir(parents=True, exist_ok=True)

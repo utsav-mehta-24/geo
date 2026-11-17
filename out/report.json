@@ -346,6 +346,10 @@
     ],
     "caveat": "Scores are ordinal indices derived from on-page structural signals and brand-authored copy (provenance: observed/inferred). No outcome or consumer-validated data exists; do not read these as probabilities, CTR predictions or conversion likelihoods."
   },
+  "content": {
+    "source": "template",
+    "reason": "AI disabled"
+  },
   "caveat": "Scores are ordinal indices derived from on-page structural signals and brand-authored copy (provenance: observed/inferred). No outcome or consumer-validated data exists; do not read these as probabilities, CTR predictions or conversion likelihoods.",
   "scenario_note": "Demo scenario: the 'before' site is seeded (Solé, Moss, Red Noir and Rush E have structured pages; the rest are naive copy renders). It is not a measured live site.",
   "refresh_target_name": "Salora",
@@ -363,6 +367,6 @@
       "after": 96.0
     }
   },
-  "timing_ms": 5.68,
+  "timing_ms": 3.82,
   "cached": false
 }

@@ -10,6 +10,7 @@ import pathlib
 import time
 from functools import lru_cache
 
+import ai
 from generator import baseline_page, refined_page
 from provenance import readiness_caveat
 from ranking import parse_intent, rank
@@ -37,29 +38,46 @@ def pick_target(results: list[dict]) -> dict:
 
 
 @lru_cache(maxsize=256)
-def _run_for_facets(facets: tuple[str, ...]):
+def _before_for_facets(facets: tuple[str, ...]):
     before = rank(PRODUCTS, BEFORE_PAGES, "", list(facets))
-    if not facets:
-        return before, None, None, None
-    target = pick_target(before["results"])
-    page = refined_page(BY_ID[target["id"]], None, list(facets))
-    pages_after = {**BEFORE_PAGES, target["id"]: page}
-    after = rank(PRODUCTS, pages_after, "", list(facets))
-    return before, after, target["id"], page
+    target = pick_target(before["results"])["id"] if facets else None
+    return before, target
 
 
 def _row(ranking: dict, pid: str) -> dict:
     return next(r for r in ranking["results"] if r["id"] == pid)
 
 
-def run(query: str) -> tuple[dict, dict[str, str]]:
-    """Run the pipeline for one query. Returns (report, pages_after)."""
+def run(query: str, use_ai: bool = True) -> tuple[dict, dict[str, str]]:
+    """Run the pipeline for one query. Returns (report, pages_after).
+
+    With use_ai and a key configured, the target page's personalised copy
+    comes from the AI variant store (exact/similar queries reuse a
+    variant). If AI is off or fails, the deterministic template is used and the
+    report's content_source says why.
+    """
     t0 = time.perf_counter()
     facets = tuple(parse_intent(query))
-    hits_before = _run_for_facets.cache_info().hits
-    before, after, target_id, page = _run_for_facets(facets)
-    cached = _run_for_facets.cache_info().hits > hits_before
-    before, after = copy.deepcopy(before), copy.deepcopy(after)
+    before, target_id = _before_for_facets(facets)
+    before = copy.deepcopy(before)
+    after, page, content = None, None, {"source": "none"}
+    if target_id:
+        prod, variant = BY_ID[target_id], None
+        if use_ai and ai.enabled():
+            try:
+                variant = ai.get_variant(query, prod, list(facets))
+                content = {"source": "ai", "match": variant["match"]["how"],
+                           "similarity": variant["match"]["similarity"],
+                           "variant_id": variant["id"], "model": variant["model"],
+                           "provenance": variant["provenance"]}
+            except ai.AIError as e:
+                content = {"source": "template", "ai_error": str(e)}
+        else:
+            content = {"source": "template",
+                       "reason": "AI disabled" if not use_ai else "no OPENROUTER_API_KEY"}
+        page = refined_page(prod, None, list(facets), ai=variant)
+        after = rank(PRODUCTS, {**BEFORE_PAGES, target_id: page}, "", list(facets))
+    cached = content.get("match") in ("exact", "similar")
 
     report = {
         "query": query,
@@ -68,6 +86,7 @@ def run(query: str) -> tuple[dict, dict[str, str]]:
         "refresh_target": target_id,
         "before": before,
         "after": after or before,
+        "content": content,
         "caveat": readiness_caveat(),
         "scenario_note": SCENARIO_NOTE,
     }

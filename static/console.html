@@ -50,10 +50,22 @@ th.n,td.n{text-align:right}
 td{padding:5px 6px;border-bottom:1px solid #f1e8dc}
 tr.target td{background:#fbefdc;font-weight:600}
 iframe{width:100%;height:72vh;border:1px solid var(--line);border-radius:10px;background:#fff}
-.placeholder{height:calc(72vh + 220px);border:2px dashed var(--line);border-radius:10px;
+.placeholder{height:72vh;border:2px dashed var(--line);border-radius:10px;
 display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
 text-align:center;padding:24px;color:var(--muted);background:#fbf6ef}
 .placeholder p{max-width:360px;font-size:14px;line-height:1.5}
+.loading{height:72vh;border:1px solid var(--line);border-radius:10px;background:#fffdf9;
+display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center}
+.spinner{width:44px;height:44px;border-radius:50%;border:4px solid var(--line);border-top-color:var(--choc);
+animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.steps{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--muted);text-align:left}
+.steps li::before{content:"○";display:inline-block;width:22px;color:var(--line)}
+.steps li.active{color:var(--ink);font-weight:600}
+.steps li.active::before{content:"◐";color:var(--gold)}
+.steps li.done{color:var(--ink)}
+.steps li.done::before{content:"✓";color:var(--up)}
+@media(prefers-reduced-motion:reduce){.spinner{animation:none;border-top-color:var(--gold)}}
 .stale{font-size:12px;color:#9a5b12;background:#fdf1df;border-radius:6px;padding:6px 10px}
 .caveat{font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:16px}
 [hidden]{display:none!important}
@@ -79,7 +91,6 @@ text-align:center;padding:24px;color:var(--muted);background:#fbf6ef}
     <section class="col">
       <div class="colhead"><span class="tag b">BEFORE</span>
         <h2 id="bTitle">—</h2><a id="bOpen" href="#" target="_blank" rel="noopener">Open ↗</a></div>
-      <div class="card"><div id="bRank"></div></div>
       <iframe id="bFrame" title="Before page" sandbox="allow-same-origin"></iframe>
     </section>
 
@@ -92,9 +103,12 @@ text-align:center;padding:24px;color:var(--muted);background:#fbf6ef}
         it for this query and re-rank all eight flavours.</p>
         <button class="btn primary" id="gen2">Generate after page</button>
       </div>
+      <div id="aLoading" class="loading" hidden role="status" aria-live="polite">
+        <div class="spinner" aria-hidden="true"></div>
+        <ul class="steps" id="steps"></ul>
+      </div>
       <div id="aBody" hidden>
-        <div class="card"><div id="aRank"></div></div>
-        <iframe id="aFrame" title="After page" sandbox="allow-same-origin" style="margin-top:12px"></iframe>
+        <iframe id="aFrame" title="After page" sandbox="allow-same-origin"></iframe>
       </div>
     </section>
   </div>
@@ -112,24 +126,13 @@ let shownQuery = null, seq = 0;
 function el(tag, text, cls) { const e = document.createElement(tag);
   if (text !== undefined) e.textContent = text; if (cls) e.className = cls; return e; }
 
-async function fetchReport(text) {
-  const res = await fetch("/api/personalize?q=" + encodeURIComponent(text));
+async function fetchReport(text, beforeOnly) {
+  const res = await fetch("/api/personalize?q=" + encodeURIComponent(text) + (beforeOnly ? "&mode=before" : ""));
   const r = await res.json(); if (!res.ok) throw new Error(r.error || res.status); return r;
 }
 
 function targetOf(r) { return r.refreshed ? r.refresh_target : r.before.results[0].id; }
 function row(rank, id) { return rank.results.find(x => x.id === id); }
-
-function table(rank, targetId) {
-  const t = el("table"), h = t.createTHead().insertRow();
-  [["#",""],["Flavour",""],["Query idx","n"],["Visibility","n"],["Intent","n"]]
-    .forEach(([c, cls]) => h.appendChild(el("th", c, cls)));
-  const b = t.createTBody();
-  rank.results.forEach(x => { const tr = b.insertRow(); if (x.id === targetId) tr.className = "target";
-    [[x.rank,""],[x.name,""],[x.query_rank_index.toFixed(1),"n"],[x.visibility_index.toFixed(1),"n"],[x.intent_match.toFixed(2),"n"]]
-      .forEach(([v, cls]) => tr.appendChild(el("td", String(v), cls))); });
-  return t;
-}
 
 function stat(label, before, after) {
   const d = el("div", undefined, "stat"), b = el("b");
@@ -140,40 +143,32 @@ function stat(label, before, after) {
 
 function renderSummary(r, withAfter) {
   const s = $("summary"); s.replaceChildren();
-  const chips = el("div", undefined, "chips");
-  (r.parsed_intent_facets.length ? r.parsed_intent_facets : ["no intent recognised"])
-    .forEach(f => chips.appendChild(el("span", f)));
-  const intent = el("div", undefined, "stat"); intent.appendChild(chips); intent.append("Parsed intent");
-  s.appendChild(intent);
   if (!r.refreshed) { s.appendChild(el("div", r.note, "stat")); return; }
   const d = r.delta;
   s.appendChild(stat("Best-fit flavour", r.refresh_target_name));
   if (withAfter) {
     s.appendChild(stat("Rank for this query", d.target_rank.before, d.target_rank.after));
-    s.appendChild(stat("Visibility index", d.target_visibility_index.before, d.target_visibility_index.after));
     s.appendChild(stat("Query index", d.target_query_rank_index.before, d.target_query_rank_index.after));
   } else {
     s.appendChild(stat("Current rank", d.target_rank.before));
-    s.appendChild(stat("Visibility index", d.target_visibility_index.before));
   }
 }
 
 function renderBefore(r) {
   const id = targetOf(r), b = row(r.before, id);
-  $("bTitle").textContent = `${b.name} — rank ${b.rank}, visibility ${b.visibility_index}`;
-  $("bRank").replaceChildren(table(r.before, id));
+  $("bTitle").textContent = `${b.name} — rank ${b.rank}`;
   $("bFrame").src = `/page/${id}`; $("bOpen").href = `/page/${id}`;
 }
 
 function renderAfter(r) {
   const id = targetOf(r), a = row(r.after, id), url = `/page/${id}?q=${encodeURIComponent(r.query)}`;
-  $("aTitle").textContent = `${a.name} — rank ${a.rank}, visibility ${a.visibility_index}`;
-  $("aRank").replaceChildren(table(r.after, id));
+  $("aTitle").textContent = `${a.name} — rank ${a.rank}`;
   $("aFrame").src = url; $("aOpen").href = url;
   $("aOpen").hidden = false; $("aPlaceholder").hidden = true; $("aBody").hidden = false;
 }
 
 function clearAfter() {
+  stopLoading();
   $("aTitle").textContent = "Not generated yet"; $("aOpen").hidden = true;
   $("aBody").hidden = true; $("aPlaceholder").hidden = false; $("stale").hidden = true;
 }
@@ -181,27 +176,57 @@ function clearAfter() {
 // Before only: show the best-fit product's current page for the query.
 async function showBefore(text) {
   const my = ++seq; $("status").textContent = "Loading the before state…";
-  try { const r = await fetchReport(text); if (my !== seq) return;
+  try { const r = await fetchReport(text, true); if (my !== seq) return;
     shownQuery = null; clearAfter(); renderBefore(r); renderSummary(r, false);
     $("caveat").textContent = r.scenario_note + " " + r.caveat;
     $("status").textContent = "Before state shown. Edit the query or press Generate after page.";
   } catch (e) { if (my === seq) $("status").textContent = "Request failed: " + e.message; }
 }
 
+// Loading panel: walks through the pipeline steps and stays up for at least
+// MIN_LOADING_MS, so even a cached answer doesn't flash past.
+const STEPS = ["Reading your query", "Matching the best flavour", "Rewriting the page for you", "Re-ranking all eight flavours"];
+const MIN_LOADING_MS = 2600;
+let stepTimer = null;
+const delay = ms => new Promise(res => setTimeout(res, ms));
+
+function startLoading() {
+  const ul = $("steps"); ul.replaceChildren(...STEPS.map(s => el("li", s)));
+  let i = 0; const items = [...ul.children];
+  const tick = () => { items.forEach((li, j) => li.className = j < i ? "done" : j === i ? "active" : "");
+    if (i < items.length - 1) i++; };
+  tick(); stepTimer = setInterval(tick, MIN_LOADING_MS / STEPS.length);
+  $("aPlaceholder").hidden = true; $("aBody").hidden = true; $("stale").hidden = true;
+  $("aLoading").hidden = false; $("aOpen").hidden = true; $("aTitle").textContent = "Personalising…";
+}
+
+function stopLoading() {
+  clearInterval(stepTimer); stepTimer = null; $("aLoading").hidden = true;
+}
+
 // Before + after: regenerate the page for the query and re-rank.
 async function generate() {
   const text = q.value.trim(); if (!text) { q.focus(); return; }
-  const my = ++seq; setBusy(true); $("status").textContent = "Generating…";
-  try { const r = await fetchReport(text); if (my !== seq) return;
+  const my = ++seq; setBusy(true); startLoading();
+  $("status").textContent = "Generating… (a new AI variant can take ~10–40 s; repeated or similar queries are faster)";
+  try { const [r] = await Promise.all([fetchReport(text), delay(MIN_LOADING_MS)]); if (my !== seq) return;
+    stopLoading();
     renderBefore(r); renderSummary(r, r.refreshed);
     if (r.refreshed) renderAfter(r); else clearAfter();
     shownQuery = text; $("stale").hidden = true;
     $("caveat").textContent = r.scenario_note + " " + r.caveat;
-    $("status").textContent = r.refreshed
-      ? `After page generated in ${r.timing_ms} ms` + (r.cached ? " (cached for this intent)." : " (fresh render).")
-      : r.note;
-  } catch (e) { if (my === seq) $("status").textContent = "Request failed: " + e.message; }
+    $("status").textContent = r.refreshed ? `After page ready in ${(r.timing_ms / 1000).toFixed(1)} s · ` + sourceText(r.content) : r.note;
+  } catch (e) { if (my === seq) { stopLoading(); clearAfter(); $("status").textContent = "Request failed: " + e.message; } }
   finally { if (my === seq) setBusy(false); }
+}
+
+function sourceText(c) {
+  if (c.source === "ai") return {
+    new: "AI-written copy, newly generated for this query",
+    exact: "AI variant reused — exact same query seen before",
+    similar: `AI variant reused — similar query (word overlap ${Math.round(c.similarity * 100)}%)`,
+  }[c.match] + ` · ${c.model}`;
+  return "Template content — " + (c.ai_error ? "AI failed: " + c.ai_error.slice(0, 140) : c.reason || "AI off");
 }
 
 function setBusy(b) { $("gen").disabled = $("gen2").disabled = b; }

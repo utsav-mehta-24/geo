@@ -6,6 +6,7 @@ JSON-LD (café pricing is a synthetic model, Atelier price is unconfirmed —
 rule 2: never default to the optimistic value). No ratings/reviews exist, so
 none are fabricated.
 """
+import html
 import json
 
 DOTS = lambda n: "●" * n + "○" * (5 - n)
@@ -107,16 +108,16 @@ def _experience(p):
 
 
 def _gift(p):
-    hero = f"Gifting this Diwali? KATHAI is a story in every cup — and {p['name']}'s is: {p['vibe']}"
+    hero = f"Giving a gift? KATHAI is a story in every cup — and {p['name']}'s is: {p['vibe']}"
     body = (f"<p><em>Kathai</em> is the deep, rich brown of fine cacao; <em>katha</em> "
             f"means story. {p['name']} — {p['taste_profile'].lower()} — is a cup with "
             f"its own: {p['hook']}</p><p>To give an experience instead, the KATHAI "
             f"Atelier runs Diwali-weekend sessions at {ATELIER_ADDRESS}. "
             "<em>Session timings and price to be confirmed.</em></p>")
-    faq = (f"Why give {p['name']} for Diwali?",
+    faq = (f"Why give {p['name']} as a gift?",
            f"KATHAI means a story in every cup. {p['name']} is "
            f"{p['taste_profile'].lower()}: {p['description']}")
-    return hero, ("html", _section("A Diwali story in every cup", body)), [faq]
+    return hero, ("html", _section("A story in every cup", body)), [faq]
 
 
 def _focus(p):
@@ -186,7 +187,18 @@ def _evening(p):
     return hero, ("html", _section("After dark", body)), [faq]
 
 
+def _date(p):
+    fits = "Date Night" in p["tags"]
+    hero = (f"Date night? {p['name']}: {p['vibe']}" if fits else
+            f"Date night? {p['name']} is {p['taste_profile'].lower()} — best for {_moments(p)}.")
+    body = f"<p>{p['description']}</p><p>Best moments: {_moments(p)}.</p>"
+    faq = (f"Is {p['name']} good for a date night?",
+           f"{p['name']} is {p['taste_profile'].lower()}, best for {_moments(p)}. {p['vibe']}")
+    return hero, ("html", _section("Made for two", body)), [faq]
+
+
 FACET_BUILDERS = {
+    "date": _date,
     "family": _family, "experience": _experience, "gift": _gift,
     "focus": _focus, "calm": _calm, "adventure": _adventure,
     "dessert": _dessert, "fitness": _fitness, "evening": _evening,
@@ -290,13 +302,29 @@ border-radius:8px}
 .vibe{font-size:17px;font-style:italic}.tags span{display:inline-block;
 background:#efe3d2;border-radius:20px;padding:3px 12px;font-size:12px;margin:3px}
 .occasion+.occasion{margin-top:14px}.senses{margin:10px 0 10px 18px;font-size:15px}
-.personal{color:var(--choc);font-weight:600}
+.personal{color:var(--choc);font-weight:600}.intro{font-size:17px;margin:6px 0 14px}
+.ai-note{font-size:11.5px;color:#8a7762;margin-top:6px;font-style:italic}
 footer{font-size:12px;color:#8a7762;padding:20px 24px;max-width:760px;margin:0 auto}
 """
 
 
-def img(p: dict, variant: str, alt: str) -> str:
-    return f'<img src="img/{p["id"]}-{variant}.jpg" alt="{alt}" loading="lazy">'
+def img(p: dict, variant: str, alt: str, src: str | None = None) -> str:
+    src = src or f"img/{p['id']}-{variant}.jpg"
+    return f'<img src="{src}" alt="{html.escape(alt)}" loading="lazy">'
+
+
+def ai_personalize(p: dict, facets: list[str], ai: dict) -> tuple[str, str, list]:
+    """Hero/sections/FAQs from an AI variant (SYNTHETIC copy, escaped)."""
+    c, e = ai["copy"], html.escape
+    hero = (f"<p class='hook personal'>{e(c['hero_line'])}</p>"
+            f"<p class='intro'>{e(c['intro'])}</p>")
+    sections = ""
+    if {"family", "experience"} & set(facets):
+        sections += _atelier_section("The KATHAI Atelier — one experience, all five senses")
+    sections += "".join(_section(e(s["heading"]), f"<p>{e(s['body'])}</p>")
+                        for s in c["sections"])
+    faqs = [(f["question"], f["answer"]) for f in c["faqs"]]
+    return hero, sections, faqs
 
 
 # ------------------------------------------------------------ page builders
@@ -321,14 +349,20 @@ def baseline_page(p: dict) -> str:
 
 
 def refined_page(p: dict, query: str | None = None,
-                 facets: list[str] | None = None) -> str:
+                 facets: list[str] | None = None, ai: dict | None = None) -> str:
     facets = facets or []
     faqs = build_faqs(p)
 
     # ---- personalization: intent-led blocks come first (above the fold,
-    # and first in FAQPage schema)
-    personal_note, occasion_html, intent_faqs = personalize(p, facets)
-    faqs = intent_faqs + faqs
+    # and first in FAQPage schema). AI variant if available, else template.
+    if ai:
+        personal_note, occasion_html, intent_faqs = ai_personalize(p, facets, ai)
+    else:
+        personal_note, occasion_html, intent_faqs = personalize(p, facets)
+    seen = {q for q, _ in intent_faqs}
+    faqs = intent_faqs + [(q, a) for q, a in faqs if q not in seen]
+    ai_note = ("<p class='ai-note'>Personalised copy on this page is "
+               "AI-generated from KATHAI's brand copy.</p>" if ai else "")
 
     serves = ""
     if p.get("serves"):
@@ -341,11 +375,12 @@ def refined_page(p: dict, query: str | None = None,
 
     lds = [product_jsonld(p), faq_jsonld(faqs), breadcrumb_jsonld(p)]
     ld_html = "\n".join(
-        f'<script type="application/ld+json">{json.dumps(l, ensure_ascii=False)}</script>'
+        # "</" can't appear inside <script>; "<\/" is the same string in JSON
+        f'<script type="application/ld+json">{json.dumps(l, ensure_ascii=False).replace("</", "<\\/")}</script>'
         for l in lds)
 
     faq_html = "".join(
-        f'<div class="answer-block"><h3>{q}</h3><p>{a}</p></div>'
+        f'<div class="answer-block"><h3>{html.escape(q)}</h3><p>{html.escape(a)}</p></div>'
         for q, a in faqs)
 
     gallery = "".join([
@@ -374,7 +409,7 @@ def refined_page(p: dict, query: str | None = None,
 <p class="hook">{p['hook']}</p>
 {personal_note}
 {occasion_html}
-<section class="gallery-wrap"><div class="gallery">{gallery}</div></section>
+<section class="gallery-wrap"><div class="gallery">{gallery}</div>{ai_note}</section>
 <section><h2>The flavour</h2><p>{p['description']}</p>
 <p class="vibe"><strong>The Vibe:</strong> {p['vibe']}</p></section>
 <section><h2>Quick taste profile</h2><table class="taste-scores">

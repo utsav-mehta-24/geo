@@ -74,6 +74,33 @@ Images are placeholder SVGs until the six-part visual assets exist.
 - Scoring reads the rendered payload (rule 4: payload, not prompt).
 - The demo "before" state is seeded, clearly labelled as such.
 
+## AI-generated content (OpenRouter)
+
+`ai.py` makes the refreshed page's personalised copy AI-generated per query.
+Images are not AI-generated: pages show placeholder tiles until real product photos exist.
+
+- **Config:** `.env` in the project root (not committed; see `.gitignore`):
+  `OPENROUTER_API_KEY` and `KATHAI_TEXT_MODELS`, a comma-separated list tried in order
+  (a rate-limited or failing model falls through to the next). Current free list:
+  `baidu/ernie-5.5-flash-preview:free, openrouter/free, particle-ai/particle-1:free,
+  google/gemma-4-31b-it:free`. Free models are capped at 50 requests/day per key
+  (OpenRouter `free_model_daily_requests`, resets 00:00 UTC). Models without strict
+  JSON-schema support (Gemma) use JSON mode plus a local shape check.
+- **Text:** one structured-output call returns the hero line, intro, 1–2 intent sections,
+  and 2–4 FAQs. The model only sees the product's facts plus brand and
+  Atelier facts, under hard rules (no prices, ratings, nutrition claims or Atelier timings).
+  Output is checked against a banned-claims list; one rewrite is allowed, then it falls back.
+  Pages carry a note saying the copy is AI-generated.
+- **Reuse:** exact same query (case and punctuation ignored) → same variant. Same product and
+  intent with word overlap ≥ 50% → same variant. Otherwise → new copy.
+  Stored in `cache/variants.json`; delete `cache/` to start fresh.
+- **Failures are reported, not hidden:** with no key or credit, or a failed or invalid
+  generation, the page uses the deterministic template and `content.source` is `template`,
+  with the error.
+- **Provenance:** AI copy is tier `synthetic`. The visibility score still reads the
+  rendered page.
+- `demo.py` stays offline unless you pass `--ai`. The console's before view never calls the AI.
+
 ## Decisions (2026-11-17)
 - **Word count reads visible text only.** The scorer counted CSS inside `<style>`
   as page words, so naive pages got answerability points they hadn't earned. Fixed:

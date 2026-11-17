@@ -25,6 +25,7 @@ import sys
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, quote, urlparse
 
+import ai
 from pipeline import BEFORE_PAGES, BY_ID, run
 
 MAX_QUERY = 300
@@ -45,6 +46,12 @@ def placeholder_svg(pid: str, variant: str) -> bytes:
 <text x="150" y="172" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#8a6a4a">{label}</text>
 <text x="150" y="196" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#a08a72">placeholder asset</text>
 </svg>""".encode("utf-8")
+
+
+def flavour_art(pid: str) -> bytes | None:
+    """Return the bespoke flavour illustration used across that product's image slots."""
+    path = pathlib.Path(__file__).parent / "static" / "flavours" / f"{pid}.svg"
+    return path.read_bytes() if path.is_file() else None
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -88,13 +95,18 @@ class Handler(BaseHTTPRequestHandler):
             q = self._query(url)
             if not q:
                 return self._json(400, {"error": "missing query parameter q"})
-            report, _ = run(q)
+            # mode=before: the console's before view — never spends on AI
+            before_only = parse_qs(url.query).get("mode", [""])[0] == "before"
+            report, _ = run(q, use_ai=not before_only)
             report["page_url"] = (f"/page/{report['refresh_target']}?q={quote(q)}"
                                   if report["refreshed"] else None)
             return self._json(200, report)
 
         m = IMG_RE.match(path)
         if m:
+            art = flavour_art(m.group(1))
+            if art:
+                return self._send(200, art, "image/svg+xml; charset=utf-8")
             return self._send(200, placeholder_svg(*m.groups()), "image/svg+xml")
 
         m = PAGE_RE.match(path)
@@ -108,7 +120,8 @@ class Handler(BaseHTTPRequestHandler):
                 personalized = report["refresh_target"] == pid
                 headers = {"X-Kathai-Intent": ",".join(report["parsed_intent_facets"]) or "none",
                            "X-Kathai-Personalized": "yes" if personalized else "no",
-                           "X-Kathai-Render-Ms": str(report["timing_ms"])}
+                           "X-Kathai-Render-Ms": str(report["timing_ms"]),
+                           "X-Kathai-Content": report["content"]["source"]}
                 return self._send(200, pages[pid].encode("utf-8"),
                                   "text/html; charset=utf-8", headers)
             return self._send(200, BEFORE_PAGES[pid].encode("utf-8"),
@@ -136,6 +149,8 @@ def main():
             stream.reconfigure(encoding="utf-8", errors="replace")
     srv =ThreadingHTTPServer((args.host, args.port), Handler)
     print(f"KATHAI GEO live server → http://{args.host}:{args.port}  (Ctrl+C to stop)")
+    print("AI: " + (f"on\n  text models:  {', '.join(ai.TEXT_MODELS)}\n"
+                    if ai.enabled() else "off (no OPENROUTER_API_KEY) — template content"))
     try:
         srv.serve_forever()
     except KeyboardInterrupt:

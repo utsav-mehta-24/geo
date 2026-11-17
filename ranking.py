@@ -136,27 +136,61 @@ def score_page(product_id: str, html: str) -> ScoreCard:
 
 # ------------------------------------------------------- intent conditioning
 
+# Keywords map everyday wording to a facet; each facet's `matches` then picks the
+# flavour (e.g. party → family → Salora, girlfriend → evening → Red Noir,
+# rainy day with a book → calm → Moss, coding → focus → Rush E). Keep words
+# whole and unambiguous: "session" used to trigger the Atelier for "coding session".
 INTENT_FACETS = {
-    "family":     {"keywords": ["family", "kids", "parents", "together", "group", "friends"],
+    "family":     {"keywords": ["family", "kids", "kid", "children", "parents", "mom", "mum", "dad",
+                                "siblings", "cousins", "together", "group", "friends", "friend",
+                                "party", "house party", "get together", "get-together", "gathering",
+                                "guests", "crowd", "everyone", "sleepover", "potluck", "birthday",
+                                "celebration", "celebrate", "reunion", "roommates", "flatmates",
+                                "hostel", "squad", "gang"],
                    "matches": {"tags": ["Comfort", "Crowd Favourite", "Dessert-Inspired", "Sweet + Salty"],
                                "best_moment": ["Anytime", "Dessert"],
                                "adventure_max": 3}},
-    "experience": {"keywords": ["experience", "atelier", "session", "workshop", "event", "do together"],
+    "experience": {"keywords": ["experience", "atelier", "workshop", "event", "do together",
+                                "tasting", "tasting session", "class", "masterclass", "outing",
+                                "day out", "activity", "things to do", "something to do",
+                                "team building", "weekend plan"],
                    "matches": {"atelier": True}},
-    "gift":       {"keywords": ["gift", "gifting", "diwali", "present", "hamper", "festive"],
+    "gift":       {"keywords": ["gift", "gifting", "diwali", "present", "hamper", "festive",
+                                "christmas", "secret santa", "return gift", "housewarming",
+                                "thank you", "corporate", "client", "colleague", "boss"],
                    "matches": {"tags": ["Comfort", "Crowd Favourite"]}},
-    "focus":      {"keywords": ["study", "studying", "work", "deadline", "focus", "awake",
-                                "energy", "exam", "gaming"],
+    "focus":      {"keywords": ["study", "studying", "work", "working", "deadline", "focus", "awake",
+                                "energy", "exam", "gaming", "coding", "code", "programming",
+                                "office", "meeting", "assignment", "homework", "revision",
+                                "productive", "productivity", "sleepy", "tired", "grind",
+                                "all-nighter", "all nighter", "lock in", "hustle", "coffee",
+                                "espresso"],
                    "matches": {"tags": ["Work Mode", "Espresso"], "best_moment": ["Work", "Study"]}},
-    "calm":       {"keywords": ["relax", "calm", "quiet", "unwind", "slow"],
+    "calm":       {"keywords": ["relax", "relaxing", "calm", "quiet", "unwind", "slow", "chill",
+                                "cozy", "cosy", "peaceful", "meditation", "meditate", "yoga",
+                                "book", "reading", "rain", "rainy", "monsoon", "self care",
+                                "self-care", "me time", "alone", "solo", "lazy", "sunday",
+                                "journaling", "mindful", "tea", "matcha", "stressed"],
                    "matches": {"tags": ["Calm", "Ritual", "Earthy"], "adventure_max": 3}},
-    "adventure":  {"keywords": ["spicy", "different", "new", "adventurous", "kick"],
+    "adventure":  {"keywords": ["spicy", "different", "new", "adventurous", "kick", "chilli",
+                                "chili", "fiery", "heat", "bold", "unique", "unusual", "weird",
+                                "experiment", "exciting", "wild", "tropical", "citrus"],
                    "matches": {"tags": ["Adventurous", "Spicy", "Unexpected Pairing"], "adventure_min": 4}},
-    "dessert":    {"keywords": ["dessert", "sweet", "treat", "indulgent"],
+    "dessert":    {"keywords": ["dessert", "sweet", "treat", "indulgent", "sweet tooth", "craving",
+                                "cake", "comfort", "caramel", "salty", "indulge", "indulgence",
+                                "cheat day", "decadent", "pamper", "reward", "after dinner"],
                    "matches": {"tags": ["Dessert", "Dessert-Inspired", "Caramel"], "sweetness_min": 3}},
-    "fitness":    {"keywords": ["protein", "workout", "gym", "macros", "fitness"],
+    "fitness":    {"keywords": ["protein", "workout", "gym", "macros", "fitness", "gains",
+                                "post workout", "post-workout", "running", "training", "athlete",
+                                "sports", "cricket", "football", "cycling", "active"],
                    "matches": {"tags": ["Protein", "Post-Workout", "Functional"]}},
-    "evening":    {"keywords": ["evening", "night", "date", "netflix"],
+    # Romance gets its own facet: on "evening" alone Red Noir, Midnight Sun and
+    # Picante tie, and the tie-break picked spicy Picante for an anniversary.
+    "date":       {"keywords": ["date", "date night", "girlfriend", "boyfriend", "partner", "wife",
+                                "husband", "bae", "crush", "anniversary", "valentine", "romantic",
+                                "romance", "candlelight", "proposal"],
+                   "matches": {"tags": ["Date Night"]}},
+    "evening":    {"keywords": ["evening", "night", "netflix", "movie", "binge"],
                    "matches": {"tags": ["Date Night", "After Dark"], "best_moment": ["Evening"]}},
 }
 
@@ -173,7 +207,12 @@ _FACET_RES = {f: [_keyword_re(k) for k in spec["keywords"]]
 
 def parse_intent(query: str) -> list[str]:
     q = query.lower()
-    return [f for f, pats in _FACET_RES.items() if any(p.search(q) for p in pats)]
+    facets = [f for f, pats in _FACET_RES.items() if any(p.search(q) for p in pats)]
+    # "late night coding": the night is when, the work is what — don't let
+    # the evening facet pull a work query toward the after-dark flavours.
+    if "focus" in facets and "evening" in facets:
+        facets.remove("evening")
+    return facets
 
 
 def intent_match(product: dict, facets: list[str]) -> tuple[float, list[str]]:
