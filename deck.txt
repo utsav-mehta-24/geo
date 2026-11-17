@@ -1,0 +1,610 @@
+# KATHAI Campaign Deck V4
+
+## Slide 1
+
+**The KATHAI**  
+Atelier · Café
+
+*A Diwali story in every cup*
+
+**EMAIL CAMPAIGN PROPOSAL · NOVEMBER 2026**
+
+**Speaker notes:**  
+Open on the Diwali mood. KATHAI means two things: a deep, rich brown, and a story. This deck walks through the story we'll tell, who we'll tell it to, and how we'll make sure the email works before it goes out. [1](https://globalappsportal-my.sharepoint.com/personal/utsav_mehta_dentsu_com/_layouts/15/Doc.aspx?sourcedoc=%7BEAEDBB13-3D69-494B-8086-A30FBC83262E%7D&file=KATHAI_Campaign_Deck_V4.pptx&action=edit&mobileredirect=true)
+
+---
+
+## Slide 2
+
+**01 · THE BRAND**
+
+### What’s in a name
+
+**THE COLOUR**
+
+Deep, dark, rich brown
+
+The colour of cacao at its finest, and our promise: only the richest, purest, best-of-the-best ingredients go into a KATHAI cup.
+
+**KAT**  
+**HAI**
+
+**THE STORY**
+
+Katha means story
+
+Every cup carries ours: where it comes from, how it is made, and what we stand for.
+
+*A story in every cup.*
+
+**Speaker notes:**  
+The name does double duty. Kathai is the deep brown of great cacao, which is our ingredient promise. And katha means story, which is how we'll connect with people. [1](https://globalappsportal-my.sharepoint.com/personal/utsav_mehta_dentsu_com/_layouts/15/Doc.aspx?sourcedoc=%7BEAEDBB13-3D69-494B-8086-A30FBC83262E%7D&file=KATHAI_Campaign_Deck_V4.pptx&action=edit&mobileredirect=true)
+
+---
+
+## Slide 3
+
+**01 · THE BRAND**
+
+### What we stand for
+
+**Pure ingredients**
+
+Real cacao, real milk and a clean label. Nothing hidden, nothing artificial.
+
+*Clean label*
+
+**High-cocoa chocolate**
+
+Couverture-grade chocolate with a bold, honest cocoa character.
+
+*67% cocoa*
+
+**Indian artisanal craft**
+
+Made by hand, cup by cup, in Bengaluru. Krafted for your moments.
+
+*Made in Bengaluru*
+
+**Speaker notes:**  
+Three brand pillars: pure ingredients, 67% cocoa chocolate and Indian artisanal craft made in Bengaluru. The percentage is carried over from the user-provided updated slide and should be confirmed against the final recipe before external publication. [1](https://globalappsportal-my.sharepoint.com/personal/utsav_mehta_dentsu_com/_layouts/15/Doc.aspx?sourcedoc=%7BEAEDBB13-3D69-494B-8086-A30FBC83262E%7D&file=KATHAI_Campaign_Deck_V4.pptx&action=edit&mobileredirect=true)
+
+---
+
+## Slide 4
+
+**01 / BRAND · ORIGIN PROPOSAL**
+
+### A story that starts at the bean
+
+Two origins to investigate. In-house processing to assess. A tasting story to build.
+
+### INDIAN ORIGIN
+
+**KARNATAKA**  
+**INDIA**
+
+Local-origin cocoa; farm or co-op to be shortlisted.
+
+**Local hero energy¹**
+
+**TO SOURCE:** Supplier · lot · traceability · COA  
+**STATUS:** Not yet selected
+
+### INTERNATIONAL ORIGIN
+
+**GHANA**  
+**WEST AFRICA**
+
+International cocoa; approved export partner to be shortlisted.
+
+**OG cocoa royalty²**
+
+**TO SOURCE:** Supplier · lot · traceability · COA  
+**STATUS:** Not yet selected
+
+### TASTING PROTOTYPE
+
+**67%**
+
+Our Six Customer Segment Personas generally leaned to 35–65% and showed interest in trying 65–75%.
+
+### BEAN-TO-CUP
+
+Fermented beans  
+› Roast & winnow  
+› Grind & refine  
+› Craft & serve
+
+**PRICING TO MODEL:** Bean cost · import/logistics · roasting/refining equipment · labour · wastage · quality control
+
+**Speaker notes:**
+
+**COCOA SLIDE — SOURCING HYPOTHESIS, NOT CONFIRMED SUPPLY CHAIN**
+
+- User's team discussed 67% as a product prototype. Six simulated/AI persona responses were interpreted as broadly favouring 35–65% and curious about sampling 65–75%. This does NOT demonstrate real consumer preference; confirm with a real tasting panel and final recipe testing.
+- Propose evaluating one Indian origin, Karnataka, and one international origin, Ghana, not claiming an existing supplier or blend. Both need actual supplier names, farms/cooperatives, lot traceability, quality certificates and prices.
+- Cocoa can be purchased as fermented, dried beans, not only powder. Bean-to-bar manufacture is a separate capability: cleaning, roasting, winnowing, grinding/refining, formulation, conching/tempering as applicable. Cocoa powder is produced by pressing cocoa liquor, then processing the cake, not the raw form.
+- In-house processing affects capex, trained labour, electricity, yields, inventory, import rules, QC and actual cup cost; consider pilot contract processing versus full in-house investment.
+
+**Sources listed in the slide notes:**
+
+- https://www.icco.org/processing-cocoa/
+- https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=158253&lang=6&reg=17
+- https://cocobod.gh/subsidiaries-and-divisions/quality-control-company
+- https://cpcri.gov.in/filemgr/webfs/publication/COCOA_TO_CHOCOLATE.pdf [1](https://globalappsportal-my.sharepoint.com/personal/utsav_mehta_dentsu_com/_layouts/15/Doc.aspx?sourcedoc=%7BEAEDBB13-3D69-494B-8086-A30FBC83262E%7D&file=KATHAI_Campaign_Deck_V4.pptx&action=edit&mobileredirect=true)
+
+---
+
+## Slide 5
+
+**04 / CAMPAIGN · EMERGING MARTECH**
+
+### Who can run the creator campaign?
+
+Ulkaa and Cheerful both describe AI-led campaign operations. The test is how much work really gets done.
+
+### Ulkaa.ai
+
+**INDIA-FIRST · AGENT OPERATIONS**
+
+**AGENT-FIRST**
+
+An eight-stage workflow, from setup to learning.
+
+**DISCOVER · ACTIVATE · EXECUTE · MEASURE**
+
+**AI WORK**
+
+Creator matching, outreach, deal negotiation, briefs and review.
+
+**APPROVAL**
+
+People set guardrails and approve consequential decisions.
+
+**KATHAI PILOT**
+
+Test India creator sourcing through content and payment stages.
+
+**VENDOR CLAIM:** 250+ team hours → 25 minutes of team involvement, for 10 collaborations.
+
+https://ulkaa.ai/
+
+### Cheerful
+
+**DIRECT CHALLENGER · BROAD AI AGENT**
+
+**BROAD AGENT**
+
+AI-led campaign execution with configurable approvals.
+
+**DISCOVER · ACTIVATE · EXECUTE · MEASURE**
+
+**AI WORK**
+
+Personalised outreach, replies, rate support, gifting and post detection.
+
+**APPROVAL**
+
+Configurable approval rules for outreach and deal steps.
+
+**KATHAI PILOT**
+
+Benchmark reply handling, gifting and live reporting against Ulkaa.
+
+**PLATFORM DESCRIPTION:** 350M+ creator profiles in its discovery database.
+
+https://www.cheerful.ai/
+
+Based on public product descriptions · November 2026 · autonomy and results require hands-on validation.
+
+**Speaker notes:**
+
+- KATHAI Campaign, source-grounded competitor overview, November 2026.
+- Reference: Ulkaa_Updated_Competitor_Comparison_2463.pptx, slides 2–7.
+- These descriptions are vendor claims/desk research, not independently tested capabilities.
+- Ulkaa.ai: https://ulkaa.ai/
+- Cheerful: https://www.cheerful.ai/
+- Pilot recommendation from source: same campaign brief and 25–50 creators; compare human minutes, response rate, time-to-live, cost per usable post and attributed sales. [1](https://globalappsportal-my.sharepoint.com/personal/utsav_mehta_dentsu_com/_layouts/15/Doc.aspx?sourcedoc=%7BEAEDBB13-3D69-494B-8086-A30FBC83262E%7D&file=KATHAI_Campaign_Deck_V4.pptx&action=edit&mobileredirect=true)
+
+---
+
+## Slide 6
+
+**04 / CAMPAIGN · EMERGING MARTECH**
+
+### Connected lifecycle or commerce-led AI?
+
+GRIN Gia and Upfluence Jaice add serious alternatives, but AI assistance is not the same as autonomy.
+
+### GRIN Gia
+
+**CREATOR LIFECYCLE · PLATFORM AGENT**
+
+**IN-PLATFORM AGENT**
+
+Connected to GRIN creator and program workflows.
+
+**DISCOVER · ACTIVATE · EXECUTE · MEASURE**
+
+**AI WORK**
+
+Matching, outreach, gifting, deliverables and reporting.
+
+**APPROVAL**
+
+Configurable approvals across creator-program workflows.
+
+**KATHAI PILOT**
+
+Compare follow-ups, reporting and creator retention in one system.
+
+**WHAT STANDS OUT:** Creator, content, payment and performance data in one platform.
+
+https://grin.co/gia
+
+### Upfluence Jaice
+
+**AI + COMMERCE · AFFILIATE ECOSYSTEM**
+
+**AI-ASSISTED**
+
+Creator intelligence connected to commerce data.
+
+**DISCOVER · ACTIVATE · EXECUTE · MEASURE**
+
+**AI WORK**
+
+Creator sourcing, invitations, follow-ups and campaign workflows.
+
+**APPROVAL**
+
+Confirm which execution steps are autonomous versus assisted.
+
+**KATHAI PILOT**
+
+Test tracking from creators to offers, visits and attributed sales.
+
+**VALIDATE IN DEMO:** Agent actions, India coverage, integrations and approvals.
+
+https://www.upfluence.com/jaice-ai-influencer-marketing/
+
+Based on public product descriptions · November 2026 · autonomy and results require hands-on validation.
+
+**Speaker notes:**
+
+- KATHAI Campaign, source-grounded competitor overview, November 2026.
+- Reference: Ulkaa_Updated_Competitor_Comparison_2463.pptx, slides 2–7.
+- These descriptions are vendor claims/desk research, not independently tested capabilities.
+- GRIN Gia: https://grin.co/gia
+- Upfluence Jaice: https://www.upfluence.com/jaice-ai-influencer-marketing/
+- Pilot recommendation from source: same campaign brief and 25–50 creators; compare human minutes, response rate, time-to-live, cost per usable post and attributed sales. [1](https://globalappsportal-my.sharepoint.com/personal/utsav_mehta_dentsu_com/_layouts/15/Doc.aspx?sourcedoc=%7BEAEDBB13-3D69-494B-8086-A30FBC83262E%7D&file=KATHAI_Campaign_Deck_V4.pptx&action=edit&mobileredirect=true)
+
+---
+
+## Slide 7
+
+**THE CAMPAIGN GOAL**
+
+### Inform, then invite: 105 seats, one weekend*
+
+**105 SEATS · 7 SESSIONS · 15 EACH**
+
+**INFORM**
+
+Introduce KATHAI and the Atelier.
+
+**REGISTER**
+
+Book one of the 105 seats.
+
+### SESSION I
+
+**15 seats**
+
+Friday, 20th November  
+7:00 PM–8:30 PM
+
+### SESSION IV, V & VI
+
+**45 seats**
+
+Saturday, 21st November
+
+- 11:00 AM–12:30 PM
+- 3:00 PM–5:30 PM
+- 7:30 PM–9:00 PM
+
+### SESSION VII, VIII & IX
+
+**45 seats**
+
+Sunday, 22nd November
+
+- 11:00 AM–12:30 PM
+- 3:00 PM–5:30 PM
+- 7:30 PM–9:00 PM
+
+**VENUE**
+
+KATHAI, 100 Feet Road, Indiranagar, Bengaluru
+
+**DURATION**
+
+90 minutes per session
+
+**PRICE**
+
+₹1,799 per guest
+
+**Speaker notes:**  
+The email has two jobs: introduce KATHAI, and get people to book. Diwali weekend, three sessions of ten seats. Session timings are a suggestion; price to be confirmed. [1](https://globalappsportal-my.sharepoint.com/personal/utsav_mehta_dentsu_com/_layouts/15/Doc.aspx?sourcedoc=%7BEAEDBB13-3D69-494B-8086-A30FBC83262E%7D&file=KATHAI_Campaign_Deck_V4.pptx&action=edit&mobileredirect=true)
+
+---
+
+## Slide 8
+
+**03 · THE ATELIER**
+
+### One experience, all five senses
+
+**Sight**
+
+Your cup is made in front of you, from pour to finish.
+
+**Smell**
+
+Cocoa melting slowly, filling the room.
+
+**Sound**
+
+A soundscape chosen to make every sip taste sweeter.
+
+**Touch**
+
+A warm ceramic cup and a slow, velvety texture.
+
+**Taste**
+
+Taste, compare and create a melt of your own.
+
+**90 MINUTES · 15 GUESTS PER SESSION · KATHAI, 100 FEET ROAD, INDIRANAGAR**
+
+**Speaker notes:**  
+The Atelier is an intimate, guided session. Each sense has a job; sound is the one that's new, so it gets its own slide next. [1](https://globalappsportal-my.sharepoint.com/personal/utsav_mehta_dentsu_com/_layouts/15/Doc.aspx?sourcedoc=%7BEAEDBB13-3D69-494B-8086-A30FBC83262E%7D&file=KATHAI_Campaign_Deck_V4.pptx&action=edit&mobileredirect=true)
+
+---
+
+## Slide 9
+
+**03 · THE ATELIER · SOUND**
+
+### The sound of sweetness
+
+**THE CHALLENGE**
+
+High-cocoa chocolate is naturally bitter, and monk fruit replaces much of the sugar. We want every cup to feel sweeter without adding sugar back.
+
+**THE SCIENCE**
+
+“Sonic seasoning” research from [Charles Spence](https://www.office.com/search?q=Charles+Spence&EntityRepresentationId=df680ae5-5cc0-8c4e-bcbf-ef1bf0c60b9c)’s Crossmodal Research Lab at Oxford shows that what we hear shifts how sweet or bitter food tastes.
+
+**Tastes sweeter**
+
+High pitch · smooth · harmonious · soft
+
+**Tastes more bitter**
+
+Low pitch · brassy · harsh · loud
+
+**OUR ATELIER PLAYLIST**
+
+- Santoor
+- High bansuri
+- Jal tarang
+- Celesta
+- Soft piano
+
+*Played softly: loud background noise dulls sweetness.*
+
+**Speaker notes:**  
+High cocoa is bitter and monk fruit is less sweet than sugar. Crossmodal research shows high-pitched, smooth, harmonious music nudges perceived sweetness up, while low, brassy sound pushes it toward bitter. So the Atelier plays santoor, high bansuri, jal tarang, celesta and soft piano, at low volume. The effect is a nudge, not magic. [1](https://globalappsportal-my.sharepoint.com/personal/utsav_mehta_dentsu_com/_layouts/15/Doc.aspx?sourcedoc=%7BEAEDBB13-3D69-494B-8086-A30FBC83262E%7D&file=KATHAI_Campaign_Deck_V4.pptx&action=edit&mobileredirect=true)
+
+---
+
+## Slide 10
+
+**PRICING · MODEL METHODOLOGY**
+
+### How prices shift demand across KATHAI
+
+**Café PRICING 01/02**
+
+### FIVE-STEP MODEL APPROACH
+
+1. **Synthetic choice data:** 5,000 choice occasions
+2. **Mixed Logit model:** Heterogeneous preferences
+3. **Demand simulation:** Shares & elasticities
+4. **Cannibalization:** Demand transfer mapping
+5. **Price optimization:** Demand vs. profit objectives
+
+### 1% PRICE INCREASE · EXPECTED CHOICE CHANGE
+
+Columns = product repriced | Rows = affected SKU
+
+| Affected SKU | Hazelnut | Milk | Rush-E | Salora |
+|---|---:|---:|---:|---:|
+| Hazelnut Praline | −1.328% | +0.151% | +0.193% | +0.175% |
+| Milk Chocolate | +0.209% | −1.371% | +0.205% | +0.186% |
+| Rush-E | +0.201% | +0.154% | −1.271% | +0.177% |
+| Salora | +0.206% | +0.158% | +0.200% | −1.278% |
+
+Diagonal = own-demand decline · Off-diagonal = within-KATHAI substitution.
+
+### 5% PRICE SHOCK · DEMAND TRANSFER
+
+Expected changes in choice occasions:
+
+| Price increase | Own loss | Other KATHAI | Competitors |
+|---|---:|---:|---:|
+| Hazelnut | −53.520 | +22.067 | +31.240 |
+| Milk | −41.657 | +18.135 | +23.362 |
+| Rush-E | −51.737 | +21.478 | +30.053 |
+| Salora | −47.293 | +20.014 | +27.094 |
+
+NONE changes: 0.159–0.213 choices; competitors capture the largest share.
+
+### FINANCIAL OUTCOME
+
+- **₹5.69L:** Best operating profit, profit-max
+- **66.74%:** Estimated profit margin, profit-max
+- **₹5.67L:** Constrained operating profit, 95% baseline demand
+- **2,495:** Expected KATHAI choices, constrained scenario
+
+**SYNTHETIC DEMO:** 5,000 choice occasions · 25% variable cost · 5% GST · ₹30/serving fixed allocation · Not observed purchases or monthly sales.
+
+**Speaker notes:**
+
+- Source: teammate's KATHAI_Cafe_Pricing_Approach_and_Cannibalization 1.pptx, complete one-slide summary.
+- The approach uses 5,000 synthetic choice occasions, a Mixed Logit model, demand simulation, cannibalization analysis and price optimization.
+- A repriced SKU loses demand; some choice transfers to other KATHAI products, competitors and NONE.
+- Competitors capture the largest share in the 5% price-shock scenario.
+- Financial outcome: ₹5.69L best estimated operating profit, 66.74% estimated profit margin, ₹5.67L constrained operating profit and 2,495 expected KATHAI choices.
+- Demo only: illustrative prices, 25% variable cost, 5% GST and ₹30/serving fixed-cost allocation.
+- Expected choices are not monthly sales.
+- Source text and tables preserved as model inputs. No inference of real-world café performance. [1](https://globalappsportal-my.sharepoint.com/personal/utsav_mehta_dentsu_com/_layouts/15/Doc.aspx?sourcedoc=%7BEAEDBB13-3D69-494B-8086-A30FBC83262E%7D&file=KATHAI_Campaign_Deck_V4.pptx&action=edit&mobileredirect=true)
+
+---
+
+## Slide 11
+
+**PRICING · PORTFOLIO OPTIMIZATION**
+
+### Finding the balance between demand and profit
+
+**Café PRICING 02/02**
+
+### MODELLED RESULTS ACROSS FOUR PRICE STRATEGIES
+
+| Strategy | Choices | Operating profit | Margin |
+|---|---:|---:|---:|
+| Baseline | 2,627 | ₹5.50L | 64.50% |
+| Demand maximization | 2,739 | ₹4.69L | 59.80% |
+| Profit maximization | 2,458 | ₹5.69L | 66.74% |
+| Constrained profit | 2,495 | ₹5.67L | 66.35% |
+
+### ILLUSTRATIVE MENU PRICES
+
+Baseline → Constrained
+
+- **Hazelnut:** ₹349 → ₹366.27
+- **Milk:** ₹299 → ₹318.39
+- **Rush-E:** ₹329 → ₹348.62
+- **Salora:** ₹379 → ₹397.31
+
+### CONSTRAINED SCENARIO
+
+**₹5.67L profit · 95% demand retained**
+
+Best modelled operating profit: profit-max ₹5.69L, with lower expected demand.
+
+**SYNTHETIC DEMO:** 5,000 choices · 5% GST · assumed costs including ₹30/serving fixed allocation · not actual sales or validated prices.
+
+**Speaker notes:**  
+Source: KATHAI_Cafe_Pricing_Optimization_Report.xlsx; sheets Portfolio summary, Product-level report, Assumptions & notes.
+
+Model scenario summaries:
+
+- Baseline: 2,626.64 choices, ₹549,779.34 profit, 64.50%
+- Demand Maximization: 2,738.79 choices, ₹469,267.18 profit, 59.80%
+- Profit Maximization: 2,458.24 choices, ₹568,914.55 profit, 66.74%
+- Constrained Profit: 2,495.30 choices, ₹567,173.94 profit, 66.35%
+
+Constrained menu prices:
+
+- Hazelnut ₹366.27 vs. ₹349 baseline
+- Milk ₹318.39 vs. ₹299
+- Rush-E ₹348.62 vs. ₹329
+- Salora ₹397.31 vs. ₹379
+
+All modelled finances are illustrative, GST 5%, variable costs synthetic, fixed allocation ₹30/serving. Not actual café sales. [1](https://globalappsportal-my.sharepoint.com/personal/utsav_mehta_dentsu_com/_layouts/15/Doc.aspx?sourcedoc=%7BEAEDBB13-3D69-494B-8086-A30FBC83262E%7D&file=KATHAI_Campaign_Deck_V4.pptx&action=edit&mobileredirect=true)
+
+---
+
+## Slide 12
+
+**PRICING · COMPLETE EXCEL MODEL**
+
+### The complete café pricing workbook
+
+**Café PRICING · WORKBOOK**
+
+**FULL MODEL · 3 WORKSHEETS**
+
+**DOUBLE-CLICK TO OPEN**
+
+Opens the complete, editable workbook in desktop PowerPoint with Excel installed.
+
+### 01 · PRODUCT-LEVEL REPORT
+
+SKU-level prices, demand, revenue, costs and margins.
+
+### 02 · PORTFOLIO SUMMARY
+
+Baseline, demand-max, profit-max and constrained results.
+
+### 03 · ASSUMPTIONS & NOTES
+
+GST, illustrative costs and synthetic-model limitations.
+
+*SYNTHETIC DEMO · Not actual café sales or validated menu prices*
+
+**Speaker notes:**  
+Embedded source: KATHAI_Cafe_Pricing_Optimization_KATHAI_Theme.xlsx, full Excel workbook with three sheets. The original figures are preserved; only cell styling/readability has been changed. Open in Microsoft PowerPoint desktop with Microsoft Excel installed. PowerPoint web viewers may not be able to launch an embedded OLE object. A standalone workbook copy is provided for compatibility. The workbook is a synthetic modelling demo, not actual demand or realised earnings. [1](https://globalappsportal-my.sharepoint.com/personal/utsav_mehta_dentsu_com/_layouts/15/Doc.aspx?sourcedoc=%7BEAEDBB13-3D69-494B-8086-A30FBC83262E%7D&file=KATHAI_Campaign_Deck_V4.pptx&action=edit&mobileredirect=true)
+
+---
+
+## Slide 13
+
+**04 · THE AUDIENCE**
+
+### Two audiences, two ways in
+
+### HAVE HAD HOT CHOCOLATE
+
+**6 segments**
+
+*We lead with craft and gifting.*
+
+The CCP reads their past purchase patterns to pick the right send time, flavour and service.
+
+### NEVER TRIED IT
+
+**12 personas**
+
+*We lead with pause and discovery.*
+
+Persona-led stories make the first cup feel easy, inviting and worth a seat.
+
+**Same Atelier. A different reason to walk in.**
+
+**Speaker notes:**  
+This split drives everything after: existing drinkers get segment-based emails informed by purchase patterns; newcomers get persona-based emails that lower the barrier to a first cup. [1](https://globalappsportal-my.sharepoint.com/personal/utsav_mehta_dentsu_com/_layouts/15/Doc.aspx?sourcedoc=%7BEAEDBB13-3D69-494B-8086-A30FBC83262E%7D&file=KATHAI_Campaign_Deck_V4.pptx&action=edit&mobileredirect=true)
+
+---
+
+## Slide 14
+
+**HOW WE FOUND THEM · 1 OF 2**
+
+### We listened before we spoke
+
+*Brandwatch query and topic word cloud*
+
+**SOURCE**
+
+Brandwatch social listening
+
+**FILTERS**
+
+English

@@ -1,0 +1,835 @@
+**KATHAI / MACROMELT**
+
+**Flavour ****&**** Product Page Architecture**
+
+**As a Brand:**
+
+**General Description**
+
+KATHAI is a premium artisanal hot chocolate brand that transforms a familiar comfort drink into a crafted sensory experience.
+
+Built around **craft, flavour, emotion and discovery**, KATHAI combines premium hot chocolate with distinctive flavour combinations and thoughtful storytelling. The brand is designed to feel premium without becoming intimidating, imaginative without becoming gimmicky, and emotional without losing sight of the product itself.
+
+At KATHAI, taste remains the hero. Customers can explore familiar favourites, discover unexpected flavours and choose a cup based on their taste, mood or moment.
+
+***Crafted for your moments.***
+
+**Gen Z Description**
+
+KATHAI is hot chocolate for whatever mood you're in.
+
+From comforting classics to unexpected flavour combinations, KATHAI gives you different ways to find your cup. Go with something familiar, pick based on your mood, discover a flavour you have never tried before, or just choose whatever sounds good today.
+
+It is premium without being pretentious, expressive without trying too hard, and designed around experiences you actually want to remember and share.
+
+There is no single way to KATHAI. Your flavour can change. Your mood can change. Your moment can change.
+
+***Your mood. Your flavour. Your ******KATHAI******.***
+
+ 
+
+**SEO Based Description**
+
+KATHAI is a **premium artisanal hot chocolate brand** offering rich, flavour-led hot chocolate experiences built around craft, discovery and distinctive flavour combinations.
+
+The KATHAI range includes classic and flavoured hot chocolate options, from Milk Chocolate, Dark Chocolate and White Chocolate to combinations featuring matcha, strawberry, orange zest, chilli, espresso, cardamom, lemon and coconut. Through its KLASSICS, MOOD MELT and MACROMELT collections, KATHAI offers different hot chocolate experiences for customers looking for familiar comfort, new flavours or protein-oriented options.
+
+Designed for hot chocolate lovers, flavour explorers and people looking for a premium chocolate experience, KATHAI brings together the richness of artisanal hot chocolate with imaginative flavours, thoughtful presentation and a memorable experience.
+
+Relevant search themes include **premium hot chocolate, artisanal hot chocolate, flavoured hot chocolate, dark hot chocolate, chocolate café, premium chocolate drinks and hot chocolate flavours.**
+
+***KATHAI******: Crafted for your moments.***
+
+ 
+
+**GEO Based Description**
+
+KATHAI is a **premium artisanal hot chocolate brand** focused on hot chocolate, flavour discovery, craft and experience. The brand offers familiar chocolate flavours alongside distinctive flavour combinations, with products organised into three core collections: KLASSICS, MOOD MELT and MACROMELT.
+
+**KLASSICS** is KATHAI's collection of familiar premium hot chocolates. It includes Milk Chocolate, Dark Chocolate, White Chocolate, Madagascar Vanilla and Hazelnut Praline.
+
+**MOOD MELT** is KATHAI's emotion-led flavour collection designed around discovery, moods and moments. The range includes Solé with lemon and coconut, Moss with matcha, Salora with salt and caramel, Red Noir with strawberry, Midnight Sun with orange zest, Rush E with espresso and cardamom, and Picante with chilli.
+
+**MACROMELT** is KATHAI's protein-oriented hot chocolate platform designed around active lifestyles.
+
+KATHAI differentiates its hot chocolate experience through the combination of **premium chocolate, distinctive flavour combinations, mood-led discovery, sensory presentation and storytelling**. Customers can navigate the range according to chocolate intensity, flavour preference or mood, allowing familiar hot chocolate to become a more personalised experience.
+
+KATHAI is designed for premium beverage explorers, flavour explorers, experience seekers and consumers interested in contemporary approaches to hot chocolate. The brand aims to make artisanal hot chocolate approachable while giving each product a clear flavour identity and a story that can be easily understood by both customers and AI-powered search and recommendation platforms.
+
+***KATHAI******: Crafted for your moments.***
+
+## Overall Direction
+
+We should treat each flavour as more than a different ingredient combination. Each one should have its own **taste profile, personality, mood, and consumption occasion**.
+
+The flavour page should help someone quickly answer:
+
+- What does it taste like?
+
+- How intense/sweet is it?
+
+- What makes it different?
+
+- When would I drink it?
+
+- Should I have it with milk or black?
+
+- Which flavour fits me?
+
+We should keep the language premium and distinctive, but still conversational enough for an 18–30 audience.
+
+| SOLÉ Chocolate • Lemon • Coconut **BRIGHT + CREAMY + CITRUSY** |
+| --- |
+
+*Sunshine, but make it chocolate.*
+
+Solé is an exquisite composition of dark chocolate, luminous lemon and the silken richness of coconut. Deep, velvety cocoa unfolds first, revealing a delicate citrus brightness that cuts through its intensity, while coconut lends a soft, sumptuous roundness to the palate.
+
+The interplay is both unexpected and impeccably poised; rich without excess, vibrant without sharpness. A refined expression of chocolate, Solé lingers with a graceful finish, leaving behind the quiet impression of something rare and beautifully considered.
+
+Solé starts smooth and chocolatey, lifts into a bright hit of lemon, then melts into a soft coconut finish. Unexpected on paper. Weirdly perfect in the cup.
+
+Rich on the first sip, citrusy on the finish, with that soft coconut note tying it all together. Unexpected? Yes. Random? Never
+
+**The Vibe:** Golden hour in a cup.
+
+| **Attribute** | **Detail** |
+| --- | --- |
+| **Keyword** | Balance |
+| **Composition** | Chocolate, Lemon, Coconut |
+| **Roast** | Medium Dark |
+| **Chocolate Intensity** | ●●●○○ |
+| **Sweetness** | ●●●○○ |
+| **Adventure Level** | ●●●●○ |
+| **Body** | Silky |
+| **Have It** | With Milk / Black |
+| **Best Moment** | Morning / Afternoon |
+| **Serve It** | Hot / Iced |
+| **Visual Variants** | Packaging / Beverage Hero Shot / Ingredient Story |
+
+**Product Tags:** Bright / Citrusy / Tropical / Light Indulgence / Unexpected Pairing / Coconut / Lemon
+
+### SEO Details
+
+| **SEO Title** | Solé Lemon Coconut Hot Chocolate │ Kathai |
+| --- | --- |
+| **Primary Keyword** | lemon coconut hot chocolate |
+| **Secondary Keywords** | coconut hot chocolate, citrus hot chocolate, flavoured hot chocolate, premium hot chocolate |
+| **URL Slug** | /products/sole-lemon-coconut-hot-chocolate |
+| **H1** | Solé – Lemon & Coconut Hot Chocolate |
+| **Meta Description** | Bright lemon, creamy coconut, and smooth chocolate come together in Solé, a refreshing and unexpected hot chocolate from Kathai. |
+| **Image Alt Text** | Kathai Solé lemon and coconut hot chocolate with lemon and coconut ingredients |
+
+| MOSS Chocolate • Matcha **EARTHY + CREAMY + CALM** |
+| --- |
+
+*Chocolate and **matcha**. An unlikely duo that just gets it.*
+
+Moss is an elegant union of dark chocolate and matcha, where the profound richness of cocoa meets the delicate earthiness of finely crafted tea. Velvety chocolate unfolds with depth and warmth, while matcha introduces a refined bitterness and a subtle vegetal freshness, creating a composition of remarkable poise.
+
+The contrast is restrained yet captivating; rich, aromatic and quietly complex. Its lingering finish leaves behind the distinctive character of matcha softened by the luxurious depth of chocolate, transforming each cup into a contemplative expression of modern indulgence.
+
+**GenZesque**** Description:**
+Deep, velvety chocolate meets the earthy, slightly bitter edge of matcha, creating a rich cup with a clean, lingering finish. Moss opens chocolatey, develops into matcha's grassy depth, and finishes smooth and mellow.
+
+It is our headphones-on, notifications-off flavour.
+
+**The Vibe:** Quiet luxury. Literally.
+
+| **Attribute** | **Detail** |
+| --- | --- |
+| **Keyword** | Ritual |
+| **Composition** | Chocolate, Matcha |
+| **Roast** | Medium Dark |
+| **Chocolate Intensity** | ●●●○○ |
+| **Sweetness** | ●●○○○ |
+| **Adventure Level** | ●●●●○ |
+| **Body** | Velvety |
+| **Have It** | With Milk / Black |
+| **Best Moment** | Morning / Slow Afternoon |
+| **Serve It** | Hot / Iced |
+| **Visual Variants** | Packaging / Beverage Hero Shot / Ingredient Story |
+
+**Product Tags:** Earthy / Matcha / Tea-Inspired / Ritual / Calm / Low Sweetness
+
+### SEO Details
+
+| **SEO Title** | Moss Matcha Hot Chocolate │ Kathai |
+| --- | --- |
+| **Primary Keyword** | matcha hot chocolate |
+| **Secondary Keywords** | chocolate matcha drink, matcha chocolate, matcha cocoa, premium matcha hot chocolate |
+| **URL Slug** | /products/moss-matcha-hot-chocolate |
+| **H1** | Moss – Matcha Hot Chocolate |
+| **Meta Description** | Earthy matcha meets smooth chocolate in Moss, Kathai's mellow tea-inspired hot chocolate made for slower, quieter moments. |
+| **Image Alt Text** | Kathai Moss matcha hot chocolate with matcha and chocolate |
+
+| SALORA Chocolate • Caramel • Sea Salt **SWEET + SALTY + SMOOTH** |
+| --- |
+
+*Sweet tooth? Say less.*
+
+Salora is a sophisticated study in the harmony of sweet and savoury, bringing together the profound richness of chocolate, the lush warmth of caramel and the delicate salinity of sea salt. Silken caramel softens the depth of cocoa, while a precise touch of sea salt heightens its natural intensity and lends remarkable clarity to the finish.
+
+Luxuriously smooth and beautifully composed, Salora unfolds with richness before settling into a poised interplay of sweetness and salinity. Its lingering finish is generous yet refined; an indulgent expression of chocolate elevated by the quiet precision of balance.
+
+**GenZesque**** Description:**
+
+Chocolate and caramel bring the indulgence. Sea salt cuts through the sweetness and keeps us coming back for another sip.
+
+Familiar enough to become a regular. Interesting enough that it does not taste like one. Well, chocolate was always going to win.
+
+**The Vibe:** Comfort food got dressed up.
+
+| **Attribute** | **Detail** |
+| --- | --- |
+| **Keyword** | Harmony |
+| **Composition** | Chocolate, Caramel, Sea Salt |
+| **Roast** | Medium Dark |
+| **Chocolate Intensity** | ●●●●○ |
+| **Sweetness** | ●●●●○ |
+| **Adventure Level** | ●●○○○ |
+| **Body** | Rich + Velvety |
+| **Have It** | With Milk / Black |
+| **Best Moment** | Anytime / Dessert |
+| **Serve It** | Hot / Iced |
+| **Visual Variants** | Packaging / Beverage Hero Shot / Ingredient Story |
+
+**Product Tags:** Sweet + Salty / Caramel / Sea Salt / Comfort / Dessert-Inspired / Crowd Favourite
+
+### SEO Details
+
+| **SEO Title** | Salora Sea Salt Caramel Hot Chocolate │ Kathai |
+| --- | --- |
+| **Primary Keyword** | sea salt caramel hot chocolate |
+| **Secondary Keywords** | salted caramel hot chocolate, caramel hot chocolate, sea salt chocolate drink, premium caramel hot chocolate |
+| **URL Slug** | /products/salora-sea-salt-caramel-hot-chocolate |
+| **H1** | Salora – Sea Salt Caramel Hot Chocolate |
+| **Meta Description** | Sweet caramel, smooth chocolate, and a touch of sea salt come together in Salora, Kathai's rich sweet-salty hot chocolate. |
+| **Image Alt Text** | Kathai Salora sea salt caramel hot chocolate with caramel and sea salt |
+
+| RED NOIR Dark Chocolate • Strawberry **DARK + FRUITY + DECADENT** |
+| --- |
+
+*She’s sweet. She’s dark. She’s got range.*
+
+Red Noir is a captivating expression of dark chocolate and strawberry, where the intensity of deep cocoa meets the luminous sweetness of ripe fruit. Velvety dark chocolate forms a rich, profound foundation, while strawberry introduces a delicate brightness that brings freshness and dimension to the palate.
+
+The contrast is both sensual and sophisticated; dark yet vibrant, indulgent yet beautifully restrained. As the flavours unfold, the fruit gradually emerges through the depth of the chocolate, culminating in a lingering finish that is elegant, nuanced and quietly evocative.
+
+**GenZesque**** Description:**
+
+Bold dark chocolate meets juicy strawberry for a rich, fruit-forward cup that balances intensity with a little flirtation. It’s giving forbidden romance, but in hot chocolate form. No notes.
+
+**The Vibe:** Date night, even if the date is Netflix.
+
+| **Attribute** | **Detail** |
+| --- | --- |
+| **Keyword** | Contrast |
+| **Composition** | Dark Chocolate, Strawberry |
+| **Roast** | Medium Dark |
+| **Chocolate Intensity** | ●●●●● |
+| **Sweetness** | ●●●○○ |
+| **Adventure Level** | ●●●○○ |
+| **Body** | Rich |
+| **Have It** | With Milk / Black |
+| **Best Moment** | Evening / Dessert |
+| **Serve It** | Hot / Iced |
+| **Visual Variants** | Packaging / Beverage Hero Shot / Ingredient Story |
+
+**Product Tags:** Dark Chocolate / Strawberry / Berry / Decadent / Dessert / Date Night
+
+### SEO Details
+
+| **SEO Title** | Red Noir Strawberry Dark Hot Chocolate │ Kathai |
+| --- | --- |
+| **Primary Keyword** | strawberry dark hot chocolate |
+| **Secondary Keywords** | strawberry hot chocolate, dark chocolate strawberry drink, berry hot chocolate, fruit flavoured hot chocolate |
+| **URL Slug** | /products/red-noir-strawberry-dark-hot-chocolate |
+| **H1** | Red Noir – Strawberry Dark Hot Chocolate |
+| **Meta Description** | Dark chocolate meets bright strawberry in Red Noir, Kathai's rich, fruity, and slightly tart take on hot chocolate. |
+| **Image Alt Text** | Kathai Red Noir strawberry dark hot chocolate with fresh strawberries and dark chocolate |
+
+| MIDNIGHT SUN Chocolate • Orange Zest **DARK + CITRUSY + AROMATIC** |
+| --- |
+
+*Dark chocolate's brighter side.*
+
+Midnight Sun is an evocative meeting of rich chocolate and radiant orange zest, bringing together the depth of cocoa with the luminous freshness of citrus. Velvety chocolate unfolds with warmth and intensity, while finely expressed orange zest introduces a bright, aromatic lift that gently illuminates the richness beneath.
+
+The result is a beautifully poised contrast of darkness and light; sumptuous yet vibrant, with a fragrance that rises delicately from the cup. Its lingering finish leaves a final impression of polished cocoa and lingering citrus, creating a composition that feels both classic and distinctly contemporary.
+
+**GenZesque**** Description:**
+
+The first thing we notice is not sweetness; it is orange. Fresh citrus aroma lands first, followed by deep chocolate and a lingering bittersweet finish.
+
+Moody but make it radiant **a little dark, a little sunny, and very much living its lush life.** 
+
+**The Vibe:** Bright flavour. Dark intentions.
+
+| **Attribute** | **Detail** |
+| --- | --- |
+| **Keyword** | Radiance |
+| **Composition** | Chocolate, Orange Zest |
+| **Roast** | Medium Dark |
+| **Chocolate Intensity** | ●●●●○ |
+| **Sweetness** | ●●○○○ |
+| **Adventure Level** | ●●●○○ |
+| **Body** | Smooth |
+| **Have It** | With Milk / Black |
+| **Best Moment** | Afternoon / Evening |
+| **Serve It** | Hot |
+| **Visual Variants** | Packaging / Beverage Hero Shot / Ingredient Story |
+
+**Product Tags:** Citrus / Orange / Aromatic / Bittersweet / Chocolate Orange / After Dark
+
+### SEO Details
+
+| **SEO Title** | Midnight Sun Orange Hot Chocolate │ Kathai |
+| --- | --- |
+| **Primary Keyword** | orange hot chocolate |
+| **Secondary Keywords** | chocolate orange drink, orange zest hot chocolate, citrus hot chocolate, dark chocolate orange drink |
+| **URL Slug** | /products/midnight-sun-orange-hot-chocolate |
+| **H1** | Midnight Sun – Orange Zest Hot Chocolate |
+| **Meta Description** | Aromatic orange zest meets deep chocolate in Midnight Sun, Kathai's bright, bittersweet take on classic chocolate-orange. |
+| **Image Alt Text** | Kathai Midnight Sun orange zest hot chocolate with chocolate and fresh orange |
+
+| RUSH-E Dark Chocolate • Espresso • Cardamom **BOLD + ROASTY + SPICED** |
+| --- |
+
+*Your 3 PM personality upgrade.*
+
+Rush-E is an arresting composition of dark chocolate, espresso and cardamom, crafted around the interplay of depth, intensity and aromatic warmth. The profound richness of dark cocoa meets the roasted character of espresso, while cardamom introduces an elegant lift; fragrant, subtly spiced and beautifully distinctive.
+
+Bold yet impeccably balanced, Rush E unfolds with an enveloping intensity before giving way to the warm, lingering character of cardamom. Its finish is deep and aromatic, leaving behind the impression of a finely crafted espresso experience expressed through the indulgence of chocolate.
+
+**GenZesque**** Description:**
+
+Dark chocolate and espresso hit first. Cardamom follows with aromatic warmth, keeping the whole thing from becoming another predictable mocha.
+
+**Fast, dramatic and unnecessarily difficult just like the song.** Except this one comes in a cup.
+
+Built for deadlines, gaming sessions, study nights and mornings when being awake simply is not enough.
+
+**The Vibe:** Lock in.
+
+| **Attribute** | **Detail** |
+| --- | --- |
+| **Keyword** | Momentum |
+| **Composition** | Dark Chocolate, Espresso, Cardamom |
+| **Roast** | Medium Dark |
+| **Chocolate Intensity** | ●●●●● |
+| **Sweetness** | ●●○○○ |
+| **Adventure Level** | ●●●○○ |
+| **Body** | Bold |
+| **Have It** | With Milk / Black |
+| **Best Moment** | Morning / Work / Study |
+| **Serve It** | Hot / Iced |
+| **Visual Variants** | Packaging / Beverage Hero Shot / Ingredient Story |
+
+**Product Tags:** Espresso / Cardamom / Bold / Work Mode / Café-Inspired / Dark Chocolate
+
+### SEO Details
+
+| **SEO Title** | Rush E Espresso Cardamom Hot Chocolate │ Kathai |
+| --- | --- |
+| **Primary Keyword** | espresso hot chocolate |
+| **Secondary Keywords** | coffee hot chocolate, cardamom hot chocolate, espresso chocolate drink, mocha with cardamom |
+| **URL Slug** | /products/rush-e-espresso-cardamom-hot-chocolate |
+| **H1** | Rush E – Espresso & Cardamom Hot Chocolate |
+| **Meta Description** | Dark chocolate, espresso, and aromatic cardamom meet in Rush E, Kathai's bold café-inspired hot chocolate built for momentum. |
+| **Image Alt Text** | Kathai Rush E espresso cardamom hot chocolate with coffee and cardamom |
+
+**Additional Requirement:**
+
+We should display caffeine per serving once the final formulation is confirmed.
+
+| PICANTE Chocolate • Chilli **RICH + WARM + SLOW-BURNING** |
+| --- |
+
+*Sweet first. **Then she understood the assignment.  *
+
+Picante is a sophisticated exploration of contrast, pairing the profound richness of chocolate with the gradual warmth of chilli. A velvety cocoa foundation unfolds gently on the palate, allowing the chilli to emerge with measured intensity, building slowly into a lingering, radiant heat.
+
+Rather than overwhelming the senses, its warmth reveals itself in stages rich and indulgent at first, increasingly spirited with every sip. The result is a beautifully composed expression of chocolate, where depth meets subtle heat in a finish that is both unexpected and enduring.
+
+**GenZesque**** Description:**
+
+It starts as silky chocolate.
+
+Then the chilli arrives.
+
+Velvety chocolate comes in smooth and rich, before chilli slowly turns up the heat. Not a slap in the face more of a *wait… is it getting spicy?* situation. Warm, indulgent and just a little chaotic. **She’s sweet, but she bites.**
+
+**The Vibe:** Choose violence. Politely.
+
+| **Attribute** | **Detail** |
+| --- | --- |
+| **Keyword** | Ember |
+| **Composition** | Chocolate, Chilli |
+| **Roast** | Medium Dark |
+| **Chocolate Intensity** | ●●●●○ |
+| **Sweetness** | ●●●○○ |
+| **Heat** | 🌶️🌶️🌶️ |
+| **Adventure Level** | ●●●●● |
+| **Body** | Rich |
+| **Have It** | With Milk / Black |
+| **Best Moment** | Evening |
+| **Serve It** | Hot |
+| **Visual Variants** | Packaging / Beverage Hero Shot / Ingredient Story |
+
+**Product Tags:** Spicy / Chilli / Slow Burn / Adventurous / Bold / Warming / After Dark
+
+### SEO Details
+
+| **SEO Title** | Picante Chilli Hot Chocolate │ Kathai |
+| --- | --- |
+| **Primary Keyword** | chilli hot chocolate |
+| **Secondary Keywords** | spicy hot chocolate, chilli chocolate drink, Mexican style hot chocolate, spicy chocolate |
+| **URL Slug** | /products/picante-chilli-hot-chocolate |
+| **H1** | Picante – Chilli Hot Chocolate |
+| **Meta Description** | Smooth chocolate followed by a gradual chilli warmth. Meet Picante, Kathai's rich, slow-burning take on spicy hot chocolate. |
+| **Image Alt Text** | Kathai Picante chilli hot chocolate with chocolate and red chilli |
+
+| MACRO MELT Chocolate • Protein Blend **CHOCOLATEY + CREAMY + FUNCTIONAL** |
+| --- |
+
+*Your protein shake could never.*
+
+INSERT TEXT HERE
+
+**GenZesque**** Description:**
+
+Macro Melt is where we bring Kathai indulgence into the performance space; a rich chocolate drink built around a protein blend without making the experience feel like another functional shake.
+
+Rich, satisfying and made for the routine **because hitting your macros doesn’t have to taste like punishment.**
+
+**The Vibe:** Gains but make them chocolate.
+
+| **Attribute** | **Detail** |
+| --- | --- |
+| **Keyword** | Performance |
+| **Composition** | Chocolate, Protein Blend |
+| **Roast** | Medium Dark |
+| **Chocolate Intensity** | ●●●●○ |
+| **Sweetness** | ●●●○○ |
+| **Adventure Level** | ●●○○○ |
+| **Body** | Thick + Creamy |
+| **Have It** | With Milk / Water* |
+| **Best Moment** | Post-Workout / Snack |
+| **Serve It** | Hot / Iced |
+| **Protein** | XXg per serving* |
+| **Visual Variants** | Packaging / Beverage Hero Shot / Ingredient Story |
+
+**Product Tags:** Protein / Functional / Post-Workout / Active Lifestyle / Chocolate / Macro-Friendly
+
+### SEO Details
+
+| **SEO Title** | Macro Melt Protein Hot Chocolate │ Kathai |
+| --- | --- |
+| **Primary Keyword** | protein hot chocolate |
+| **Secondary Keywords** | high protein hot chocolate*, chocolate protein drink, hot protein drink, protein chocolate |
+| **URL Slug** | /products/macro-melt-protein-hot-chocolate |
+| **H1** | Macro Melt – Protein Hot Chocolate |
+| **Meta Description** | Rich chocolate meets functional nutrition in Macro Melt, Kathai's creamy protein hot chocolate designed for active lifestyles. |
+| **Image Alt Text** | Kathai Macro Melt protein hot chocolate with chocolate protein blend |
+
+*We should only use nutritional claims such as **“high protein”** once the final formulation qualifies for the claim.
+
+# Collection Page
+
+## What's Your Kathai?
+
+We should make choosing a flavour part of the experience instead of expecting someone to read eight product descriptions.
+
+*Eight flavours. Eight moods. One exceedingly difficult decision.*
+
+| **If I am looking for...** | **Try** |
+| --- | --- |
+| **Bright, tropical, and different** | **Solé** |
+| **Calm and earthy** | **Moss** |
+| **Sweet-salty comfort** | **Salora** |
+| **Rich and fruity** | **Red Noir** |
+| **Dark chocolate with citrus** | **Midnight Sun** |
+| **Something to lock in with** | **Rush E** |
+| **Something with a kick** | **Picante** |
+| **Chocolate with a functional edge** | **Macro Melt** |
+
+We should eventually make this interactive on the website through flavour filters or a short **“Find Your ****Kathai****”** quiz.
+
+# Standard Product Page Architecture
+
+Every flavour should follow the **same page structure**. The content changes, but the customer should always know where to find the valuable information.
+
+## 1. Product Hero
+
+This should answer the most important questions immediately without scrolling.
+
+### We should show:
+
+| **Product Name** | Salora |
+| --- | --- |
+| **Flavour** | Chocolate • Caramel • Sea Salt |
+| **Three-Word Taste Profile** | SWEET + SALTY + SMOOTH |
+| **One-Line Hook** | *The safe choice. Never the boring one.* |
+
+Alongside this, we should have:
+
+- Main product/packaging image
+
+- Price
+
+- Pack size
+
+- Quantity selector
+
+- Add to Cart
+
+- Subscription option, if applicable
+
+- Rating/reviews once available
+
+We should also use small visual badges for genuinely useful product information such as **Vegetarian / Vegan / Protein / Caffeinated / etc.**, depending on the final formulation.
+
+## 2. Quick Taste Profile
+
+We should make flavour comparison visual rather than relying entirely on descriptions.
+
+Every page should display:
+
+| **Chocolate Intensity** | ●●●●○ |
+| --- | --- |
+| **Sweetness** | ●●●●○ |
+| **Adventure Level** | ●●○○○ |
+| **Body** | Rich + Velvety |
+| **Roast** | Medium Dark |
+| **Best With** | Milk / Black |
+| **Best Moment** | Anytime / Dessert |
+| **Serve It** | Hot / Iced |
+
+These scores should **change between flavours** and reflect how the product tastes.
+
+Where a flavour needs something unique, we can add it. For example:
+
+| **Picante** | Heat 🌶️🌶️🌶️ |
+| --- | --- |
+| **Rush E** | Caffeine per serving |
+| **Macro Melt** | Protein per serving |
+
+## 3. Flavour Story
+
+We should then give the flavour its personality.
+
+This section should contain:
+
+### Headline
+
+*Comfort food got dressed up.*
+
+### Description
+
+A short 2–3 paragraph description explaining:
+
+- What hits first?
+
+- What develops through the drink?
+
+- What the finish is like?
+
+- Why the combination works?
+
+We should avoid overly technical tasting language here. It needs to sound like something we would say about the drink.
+
+## 4. The Vibe
+
+Every flavour should have a one-line personality statement.
+
+Examples:
+
+| **Solé** | Golden hour in a cup. |
+| --- | --- |
+| **Moss** | Quiet luxury. Literally. |
+| **Salora** | Comfort food got dressed up. |
+| **Red Noir** | Date night, even if the date is Netflix. |
+| **Midnight Sun** | Bright flavour. Dark intentions. |
+| **Rush E** | Lock in. |
+| **Picante** | Choose violence. Politely. |
+| **Macro Melt** | Gains, but make them chocolate. |
+
+This can become a strong recurring element across the website, packaging, and social content.
+
+## 5. What's Inside
+
+We should have a transparent section covering the actual product.
+
+This should include:
+
+- Full ingredient list
+
+- Cocoa/chocolate information
+
+- Allergens
+
+- Nutritional information
+
+- Calories per serving
+
+- Sugar per serving
+
+- Serving size
+
+- Caffeine where relevant
+
+- Protein where relevant
+
+- Storage instructions
+
+- Shelf life
+
+We should only add claims such as **high protein, low sugar, vegan, natural, preservative-free** etc. once we can substantiate them.
+
+## 6. Make Your Kathai
+
+Preparation should be extremely visual and require almost no reading.
+
+We should create a simple **three-step preparation system** that remains consistent across every flavour.
+
+For example:
+
+**OPEN → POUR → MELT**
+
+| **1. OPEN** | Open your Kathai. |
+| --- | --- |
+| **2. POUR** | Add the recommended amount of milk or water. |
+| **3. MELT** | Heat, mix and enjoy. |
+
+If the self-heating mechanism is part of the final product, this section should become one of the most important parts of the page and visually demonstrate exactly how it works.
+
+We should use illustrations or short looping animations rather than a paragraph of preparation instructions.
+
+## 7. Make It Yours
+
+We should show that there is more than one way to have each flavour.
+
+For example:
+
+### SALORA
+
+| **Classic** | Hot + Milk |
+| --- | --- |
+| **Iced ****Salora** | Cold Milk + Ice |
+| **Dark ****Salora** | Hot Water / Black |
+| **Dessert Mode** | Milk + Whipped Cream + Caramel |
+
+Each flavour can have **one signature ****Kathai**** serve** unique to it.
+
+This gives us additional content for the website, social media, and packaging QR codes.
+
+## 8. Why Kathai?
+
+We should use this section to explain the actual reasons to choose Kathai rather than filling it with generic brand statements.
+
+Potential areas include:
+
+- Self-heating experience
+
+- Portability
+
+- Cocoa/chocolate quality
+
+- Ingredient quality
+
+- Convenience
+
+- Flavour innovation
+
+- Preparation time
+
+- Packaging
+
+- Functional benefits
+
+The final points should depend on what we can genuinely claim about the finished product.
+
+## 9. Find Your Next Flavour
+
+Every product page should recommend approximately **three other flavours**, but the recommendations should make sense.
+
+For example:
+
+### If you are viewing Salora:
+
+| **Want something darker?** | → Red Noir |
+| --- | --- |
+| **Want something bolder?** | → Picante |
+| **Want something brighter?** | → Solé |
+
+We should avoid simply displaying three random products under **“You May Also Like.”**
+
+The recommendation itself can help explain the difference between flavours.
+
+## 10. Reviews & Community
+
+Once we launch, we should make reviews more useful than just a star rating.
+
+We could ask customers to rate:
+
+- Taste
+
+- Sweetness
+
+- Chocolate intensity
+
+- Value
+
+- Would buy again.
+
+We could also allow reviews to display **“Had it: Hot / Iced / Milk / Black.”**.
+
+This gives future customers information that helps them choose.
+
+## 11. FAQs
+
+Every product should use the same core FAQ structure, with additional questions where required.
+
+### Core Questions
+
+- How do I prepare it?
+
+- Should I have it with milk or water?
+
+- Can I drink it iced?
+
+- How sweet is it?
+
+- How many servings are included?
+
+- What is the serving size?
+
+- What are the ingredients?
+
+- Does it contain allergens?
+
+- How should I store it?
+
+- What is the shelf life?
+
+### Product-Specific Questions
+
+**Rush E**
+
+- How much caffeine does it contain?
+
+- Does it contain real espresso?
+
+**Macro Melt**
+
+- How much protein is in one serving?
+
+- What protein blend do we use?
+
+- Can I have it after a workout?
+
+**Picante**
+
+- How spicy is it?
+
+- Does the heat hit immediately?
+
+**Moss**
+
+- Does it contain real matcha?
+
+- Does it contain caffeine?
+
+# SEO Standardisation
+
+We should follow the same SEO framework for every product rather than optimising pages independently.
+
+### Page Structure
+
+| **URL** | /products/[product-name]-[primary-flavour]-hot-chocolate |
+| --- | --- |
+| **Title Tag** | [Product Name] [Primary Flavour] Hot Chocolate │ Kathai |
+| **H1** | [Product Name] – [Flavour] Hot Chocolate |
+| **Meta Description** | Approximately 140–160 characters explaining the flavour and main differentiation. |
+| **Primary Keyword** | One clear product/search phrase. |
+| **Secondary Keywords** | Approximately 3–5 closely related search terms. |
+| **Image Alt Text** | Should describe what is visible while naturally including the product/flavour. |
+
+We should avoid stuffing keywords into the product descriptions. The page should still read naturally.
+
+# Technical SEO / E-Commerce Requirements
+
+Alongside the visible SEO copy, we should build the pages properly behind the scenes.
+
+We should include:
+
+- Product structured data
+
+- Brand: Kathai
+
+- Product name
+
+- Product description
+
+- Product image
+
+- SKU
+
+- Price
+
+- Currency
+
+- Availability
+
+- Ratings/reviews once available
+
+- Breadcrumb structured data
+
+- Canonical URL
+
+- Open Graph title
+
+- Open Graph description
+
+- Social sharing image
+
+If all eight flavours are sold as variants of one core Kathai product, we should also explore **ProductGroup**** / Product Variant structured data** rather than treating the relationship between them as completely separate products.
+
+# Visual Content Standard
+
+Each flavour should have the same basic set of visual assets so that the collection feels intentional.
+
+| **1. Packaging Shot** | Clean pack shot for product listings and e-commerce. |
+| --- | --- |
+| **2. Beverage Hero Shot** | Finished drink showing texture, colour, and serving style. |
+| **3. Ingredient Story** | Chocolate alongside the flavour ingredients – matcha, strawberry, chilli, orange, etc. |
+| **4. Mood / Lifestyle Shot** | The environment associated with the flavour. |
+| **5. Texture Shot** | Close-up of the actual drink to communicate richness and mouthfeel. |
+| **6. Preparation Visual** | The standard Kathai preparation process. |
+
+Examples (Mood / Lifestyle Shot):
+
+| **Rush E** | desk / study / creative session |
+| --- | --- |
+| **Red Noir** | evening / dessert |
+| **Solé** | bright morning / outdoors |
+| **Macro Melt** | active / post-workout |
+| **Moss** | slow morning / quiet space |
+
+This means each flavour launches with a **consistent six-part visual system**, while the colours, ingredients and mood make each one recognisable.
+
+# Overall Principle
+
+We should make the flavour architecture work at three different depths.
+
+| **At a glance** | Name → Ingredients → Three-word taste profile → Scores |
+| --- | --- |
+| **When considering** | Flavour story → The Vibe → Best Moment → Serving suggestions |
+| **When buying** | Price → Ingredients → Nutrition → Preparation → FAQs → Reviews |
+
+Someone should be able to understand a Kathai flavour in **five seconds**, explore it in **thirty seconds**, and still find all the detailed information they need before buying.
+
+*The aim should be to make choosing a flavour feel like choosing a mood or experience, not just choosing which ingredients we have added to chocolate.*
+
+Kathai / MacroMelt – Flavour & Product Page Architecture   |   1

@@ -1,0 +1,115 @@
+KATHAI GEO Pipeline — Context & Handover
+The goal
+Make KATHAI's product pages win in AI-powered search and recommendation (GEO), and make the pages themselves adapt to the query. Two connected pieces:
+1.  Refine AI ranking — improve how answer engines rank KATHAI flavour pages using structured FAQ, JSON-LD, richer imagery and better content.
+2.  Query-personalized pages — given a user query (e.g. "I want hot chocolate with my family and need an experience"), identify the right product, regenerate its HTML page personalized to that intent, and show that this both (a) improves its ranking and (b) refreshes the page itself.
+The worked example: a product ranked 5th for a query should reach rank 1 after its page is refreshed — competitors' pages untouched.
+Source material
+All content comes from two client-authored files (provenance: observed brand copy — no consumer-validated data exists anywhere in the project).
+Source
+What it holds
+Kathai_Flavours.docx
+Brand descriptions (general, Gen Z, SEO, GEO), 8 flavour pages with taste profiles, attribute tables, vibes, product tags and per-product SEO details; the standard product-page architecture (11 sections); SEO standardisation rules; the six-part visual content standard
+KATHAI Campaign Deck V4 (transcription)
+Brand story (kathai = deep brown; katha = story), three pillars, the Atelier experience (90 min, 15 guests, Indiranagar, Bengaluru), Diwali email campaign, synthetic café pricing model, audience split (6 segments / 12 personas)
+The 8 flavours: Solé, Moss, Salora, Red Noir, Midnight Sun, Rush E, Picante (MOOD MELT) and Macro Melt (MACROMELT). KLASSICS exists as a collection but has no per-product copy yet.
+What was built
+A working Python prototype (kathai_geo/, delivered as a zip in the chat) that runs end to end with python demo.py. The pipeline: parse the query into intent facets → score every live page → rank → pick the best-fit underperformer → regenerate only that page → re-rank.
+File
+Role
+data/products.json
+All 8 flavours structured from the docx: copy, attributes (intensity, sweetness, adventure, body, moments, serves), tags, SEO fields, and pending/blocked claims
+provenance.py
+Tier tags (observed / inferred / synthetic / validated), blocked-claims list, mandatory score caveat
+ranking.py
+AI-visibility scorer + intent conditioning (details below)
+generator.py
+baseline_page() — naive copy render; refined_page(product, query, facets) — fully structured, optionally personalized HTML
+demo.py
+Runs query 1 end to end; writes before/after pages and report.json
+The scorer reads the rendered HTML payload (not the intent) and scores five signal groups, total 100:
+Signal group
+Max
+What it checks
+Structured data
+30
+Product JSON-LD (description, brand, offers, image), FAQPage, BreadcrumbList
+FAQ coverage
+20
+Quotable Q&A pairs in FAQPage schema (2.5 each, capped at 8)
+Answerability
+25
+Direct-answer blocks, taste-score table, occasion block, prep steps, word count
+Media
+15
+Up to 6 images (the six-part visual standard) with descriptive alt text
+Claim safety
+10
+Deducts unsubstantiated claims ("high protein" etc.); fabricated ratings/reviews zero it
+Query ranking = visibility × (0.5 + 0.5 × intent_match). Intent facets (family, experience, gift, focus, calm, adventure, dessert, fitness, evening) match against product tags, best moments and attribute thresholds; the experience facet only credits a page that actually surfaces the Atelier.
+The personalizer regenerates a page for a query: intent-led hero line and occasion block above the fold (e.g. family → the Atelier block), intent-relevant FAQs ranked first in the FAQPage schema, full JSON-LD (Product + FAQPage + Breadcrumb), canonical + Open Graph tags, six images with alt text, prep steps and serves.
+Demo result — query 1
+Query: "I want hot chocolate with my family and need an experience" → facets family, experience. Result: Salora rank 5 → 1, visibility index 14.5 → 96.0, with only Salora's page regenerated.
+Seeded "before" state (a realistic site, labelled as a demo scenario): Solé, Moss, Red Noir and Rush E already had structured pages; Salora — the best intent fit (comfort, crowd favourite, anytime) — was a naive copy render and lost on visibility.
+Rank
+Before
+Query index
+After
+Query index
+1
+Red Noir
+71.0
+Salora
+96.0
+2
+Rush E
+66.7
+Red Noir
+71.0
+3
+Solé
+53.8
+Rush E
+66.7
+4
+Moss
+53.8
+Solé
+53.8
+5
+Salora
+12.7
+Moss
+53.8
+6
+Macro Melt
+11.2
+Macro Melt
+11.2
+7
+Midnight Sun
+9.7
+Midnight Sun
+9.7
+8
+Picante
+9.1
+Picante
+9.1
+Deliverables in the chat: demo_report.html (shareable before/after summary), the regenerated Salora page vs its baseline, and the full code zip.
+Guardrails (kathai-provenance)
+The project enforces the KATHAI provenance discipline throughout:
+• Every claim carries a tier; no validated source is connected, so nothing emits a "validated" verdict. Scores are ordinal indices, never probabilities or conversion likelihoods; every ranking ships with readiness_caveat().
+• No fabricated ratings or reviews — aggregateRating is deliberately absent from JSON-LD; the scorer zeroes claim-safety if any appears.
+• No prices rendered — café pricing is a synthetic model (5,000 synthetic choice occasions), Atelier price is unconfirmed.
+• Blocked claims — "high protein", "low sugar", "vegan", "preservative-free" stay off pages until the formulation qualifies; caffeine (Rush E) and protein grams (Macro Melt) are placeholders, so FAQs needing them are excluded rather than guessed.
+• Scoring reads the rendered payload, not the intended render (rule 4: payload, not prompt).
+• The seeded before-state is labelled a demo scenario, not a measured live site.
+Open items & next steps
+[ ] Run more queries (gift/Diwali, study/focus, spicy/adventurous, post-workout) — change QUERY in demo.py; extend INTENT_FACETS as needed
+[ ] Replace the seeded before-state with fetched live pages once the site exists
+[ ] Wire personalization into serving (e.g. edge-rendered variants per query intent, canonical pointing at the base page)
+[ ] Add Offer JSON-LD once pricing is confirmed; add caffeine/protein FAQs once formulation is final
+[ ] Add aggregateRating only when real reviews exist
+[ ] KLASSICS flavours (Milk, Dark, White, Madagascar Vanilla, Hazelnut Praline) need product copy before pages can be generated
+[ ] Plug in validated consumer data (real tasting panel) as Provenance.VALIDATED when available

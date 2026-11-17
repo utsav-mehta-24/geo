@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KATHAI GEO Live</title>
+<style>
+:root{--choc:#3b2314;--cream:#f6efe7;--gold:#c99b5f;--ink:#241a12;--muted:#7d6a56;
+--card:#fff;--line:#e6d9c8;--up:#2f6b3a;--before:#8a7762;--after:#3b2314}
+*{box-sizing:border-box;margin:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--cream);color:var(--ink)}
+header{background:var(--choc);color:var(--cream);padding:18px 24px}
+header .brand{letter-spacing:.35em;font-size:12px;color:var(--gold)}
+header h1{font-family:Georgia,serif;font-size:22px;font-weight:400;margin-top:4px}
+main{max-width:1500px;margin:0 auto;padding:18px 24px}
+@media(max-width:700px){main{padding:16px}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.qrow{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+input{flex:1 1 320px;font-size:16px;padding:12px 14px;border:2px solid var(--line);
+border-radius:8px;background:#fffdf9;color:var(--ink)}
+input:focus{outline:none;border-color:var(--gold)}
+.btn{font-size:15px;padding:12px 18px;border-radius:8px;border:0;cursor:pointer;font-weight:600}
+.btn.primary{background:var(--choc);color:var(--cream)}
+.btn.primary:hover{background:#52321d}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.btn:disabled{opacity:.55;cursor:default}
+.examples{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.examples small{color:var(--muted);margin-right:4px}
+.examples button{border:1px solid var(--line);background:#fbf6ef;border-radius:16px;
+padding:4px 10px;font-size:12px;cursor:pointer;color:var(--ink)}
+.examples button:hover{border-color:var(--gold)}
+.status{font-size:12px;color:var(--muted);margin-top:8px;min-height:16px}
+.summary{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;margin:14px 0}
+.chips span{display:inline-block;background:var(--choc);color:var(--cream);border-radius:14px;
+padding:2px 10px;font-size:12px;margin:2px 4px 2px 0}
+.stat{font-size:12px;color:var(--muted)}
+.stat b{display:block;font-family:Georgia,serif;font-size:22px;font-weight:400;color:var(--ink)}
+.stat b .up{color:var(--up)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:1000px){.cols{grid-template-columns:1fr}}
+.col{display:flex;flex-direction:column;gap:12px;min-width:0}
+.colhead{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.tag{font-size:11px;font-weight:700;letter-spacing:.14em;padding:3px 10px;border-radius:4px;color:#fff}
+.tag.b{background:var(--before)}.tag.a{background:var(--after)}
+.colhead h2{font-family:Georgia,serif;font-size:18px;font-weight:400;flex:1}
+.colhead a{font-size:13px;color:var(--choc)}
+table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:600;color:var(--muted);font-size:11px;text-transform:uppercase;
+letter-spacing:.05em;padding:4px 6px;border-bottom:1px solid var(--line)}
+th.n,td.n{text-align:right}
+td{padding:5px 6px;border-bottom:1px solid #f1e8dc}
+tr.target td{background:#fbefdc;font-weight:600}
+iframe{width:100%;height:72vh;border:1px solid var(--line);border-radius:10px;background:#fff}
+.placeholder{height:calc(72vh + 220px);border:2px dashed var(--line);border-radius:10px;
+display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+text-align:center;padding:24px;color:var(--muted);background:#fbf6ef}
+.placeholder p{max-width:360px;font-size:14px;line-height:1.5}
+.stale{font-size:12px;color:#9a5b12;background:#fdf1df;border-radius:6px;padding:6px 10px}
+.caveat{font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:16px}
+[hidden]{display:none!important}
+</style></head>
+<body>
+<header><div class="brand">KATHAI · GEO LIVE</div>
+<h1>Before / after: a product page personalized to the query</h1></header>
+<main>
+  <div class="card">
+    <label for="q">Customer query</label>
+    <div class="qrow">
+      <input id="q" autocomplete="off">
+      <button class="btn primary" id="gen">Generate after page</button>
+      <button class="btn ghost" id="reset" title="Back to the sample query, before state only">Reset</button>
+    </div>
+    <div class="examples" id="examples"><small>Try:</small></div>
+    <div class="status" id="status"></div>
+  </div>
+
+  <div class="summary" id="summary"></div>
+
+  <div class="cols">
+    <section class="col">
+      <div class="colhead"><span class="tag b">BEFORE</span>
+        <h2 id="bTitle">—</h2><a id="bOpen" href="#" target="_blank" rel="noopener">Open ↗</a></div>
+      <div class="card"><div id="bRank"></div></div>
+      <iframe id="bFrame" title="Before page" sandbox="allow-same-origin"></iframe>
+    </section>
+
+    <section class="col">
+      <div class="colhead"><span class="tag a">AFTER</span>
+        <h2 id="aTitle">Not generated yet</h2><a id="aOpen" href="#" target="_blank" rel="noopener" hidden>Open ↗</a></div>
+      <div id="stale" class="stale" hidden>The query changed. Press <b>Generate after page</b> to update.</div>
+      <div id="aPlaceholder" class="placeholder">
+        <p>The before page is shown on the left. Press <b>Generate after page</b> to regenerate
+        it for this query and re-rank all eight flavours.</p>
+        <button class="btn primary" id="gen2">Generate after page</button>
+      </div>
+      <div id="aBody" hidden>
+        <div class="card"><div id="aRank"></div></div>
+        <iframe id="aFrame" title="After page" sandbox="allow-same-origin" style="margin-top:12px"></iframe>
+      </div>
+    </section>
+  </div>
+
+  <p class="caveat" id="caveat"></p>
+</main>
+<script>
+const SAMPLE = "I want hot chocolate with my family and need an experience";
+const EXAMPLES = [SAMPLE, "A Diwali gift for my parents", "Something to keep me awake while studying for exams",
+  "Post-workout protein hot chocolate", "Something spicy and different", "Date night dessert", "Calm quiet evening"];
+const $ = id => document.getElementById(id);
+const q = $("q");
+let shownQuery = null, seq = 0;
+
+function el(tag, text, cls) { const e = document.createElement(tag);
+  if (text !== undefined) e.textContent = text; if (cls) e.className = cls; return e; }
+
+async function fetchReport(text) {
+  const res = await fetch("/api/personalize?q=" + encodeURIComponent(text));
+  const r = await res.json(); if (!res.ok) throw new Error(r.error || res.status); return r;
+}
+
+function targetOf(r) { return r.refreshed ? r.refresh_target : r.before.results[0].id; }
+function row(rank, id) { return rank.results.find(x => x.id === id); }
+
+function table(rank, targetId) {
+  const t = el("table"), h = t.createTHead().insertRow();
+  [["#",""],["Flavour",""],["Query idx","n"],["Visibility","n"],["Intent","n"]]
+    .forEach(([c, cls]) => h.appendChild(el("th", c, cls)));
+  const b = t.createTBody();
+  rank.results.forEach(x => { const tr = b.insertRow(); if (x.id === targetId) tr.className = "target";
+    [[x.rank,""],[x.name,""],[x.query_rank_index.toFixed(1),"n"],[x.visibility_index.toFixed(1),"n"],[x.intent_match.toFixed(2),"n"]]
+      .forEach(([v, cls]) => tr.appendChild(el("td", String(v), cls))); });
+  return t;
+}
+
+function stat(label, before, after) {
+  const d = el("div", undefined, "stat"), b = el("b");
+  b.append(String(before));
+  if (after !== undefined) { b.append(" → "); b.appendChild(el("span", String(after), "up")); }
+  d.appendChild(b); d.append(label); return d;
+}
+
+function renderSummary(r, withAfter) {
+  const s = $("summary"); s.replaceChildren();
+  const chips = el("div", undefined, "chips");
+  (r.parsed_intent_facets.length ? r.parsed_intent_facets : ["no intent recognised"])
+    .forEach(f => chips.appendChild(el("span", f)));
+  const intent = el("div", undefined, "stat"); intent.appendChild(chips); intent.append("Parsed intent");
+  s.appendChild(intent);
+  if (!r.refreshed) { s.appendChild(el("div", r.note, "stat")); return; }
+  const d = r.delta;
+  s.appendChild(stat("Best-fit flavour", r.refresh_target_name));
+  if (withAfter) {
+    s.appendChild(stat("Rank for this query", d.target_rank.before, d.target_rank.after));
+    s.appendChild(stat("Visibility index", d.target_visibility_index.before, d.target_visibility_index.after));
+    s.appendChild(stat("Query index", d.target_query_rank_index.before, d.target_query_rank_index.after));
+  } else {
+    s.appendChild(stat("Current rank", d.target_rank.before));
+    s.appendChild(stat("Visibility index", d.target_visibility_index.before));
+  }
+}
+
+function renderBefore(r) {
+  const id = targetOf(r), b = row(r.before, id);
+  $("bTitle").textContent = `${b.name} — rank ${b.rank}, visibility ${b.visibility_index}`;
+  $("bRank").replaceChildren(table(r.before, id));
+  $("bFrame").src = `/page/${id}`; $("bOpen").href = `/page/${id}`;
+}
+
+function renderAfter(r) {
+  const id = targetOf(r), a = row(r.after, id), url = `/page/${id}?q=${encodeURIComponent(r.query)}`;
+  $("aTitle").textContent = `${a.name} — rank ${a.rank}, visibility ${a.visibility_index}`;
+  $("aRank").replaceChildren(table(r.after, id));
+  $("aFrame").src = url; $("aOpen").href = url;
+  $("aOpen").hidden = false; $("aPlaceholder").hidden = true; $("aBody").hidden = false;
+}
+
+function clearAfter() {
+  $("aTitle").textContent = "Not generated yet"; $("aOpen").hidden = true;
+  $("aBody").hidden = true; $("aPlaceholder").hidden = false; $("stale").hidden = true;
+}
+
+// Before only: show the best-fit product's current page for the query.
+async function showBefore(text) {
+  const my = ++seq; $("status").textContent = "Loading the before state…";
+  try { const r = await fetchReport(text); if (my !== seq) return;
+    shownQuery = null; clearAfter(); renderBefore(r); renderSummary(r, false);
+    $("caveat").textContent = r.scenario_note + " " + r.caveat;
+    $("status").textContent = "Before state shown. Edit the query or press Generate after page.";
+  } catch (e) { if (my === seq) $("status").textContent = "Request failed: " + e.message; }
+}
+
+// Before + after: regenerate the page for the query and re-rank.
+async function generate() {
+  const text = q.value.trim(); if (!text) { q.focus(); return; }
+  const my = ++seq; setBusy(true); $("status").textContent = "Generating…";
+  try { const r = await fetchReport(text); if (my !== seq) return;
+    renderBefore(r); renderSummary(r, r.refreshed);
+    if (r.refreshed) renderAfter(r); else clearAfter();
+    shownQuery = text; $("stale").hidden = true;
+    $("caveat").textContent = r.scenario_note + " " + r.caveat;
+    $("status").textContent = r.refreshed
+      ? `After page generated in ${r.timing_ms} ms` + (r.cached ? " (cached for this intent)." : " (fresh render).")
+      : r.note;
+  } catch (e) { if (my === seq) $("status").textContent = "Request failed: " + e.message; }
+  finally { if (my === seq) setBusy(false); }
+}
+
+function setBusy(b) { $("gen").disabled = $("gen2").disabled = b; }
+
+EXAMPLES.forEach(e => { const b = el("button", e); b.onclick = () => { q.value = e; showBefore(e); };
+  $("examples").appendChild(b); });
+$("gen").onclick = $("gen2").onclick = generate;
+$("reset").onclick = () => { q.value = SAMPLE; showBefore(SAMPLE); };
+q.addEventListener("keydown", e => { if (e.key === "Enter") generate(); });
+q.addEventListener("input", () => { $("stale").hidden = !(shownQuery && q.value.trim() !== shownQuery); });
+
+q.value = SAMPLE;
+showBefore(SAMPLE);
+</script></body></html>

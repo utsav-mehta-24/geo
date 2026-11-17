@@ -40,6 +40,17 @@ def build_faqs(p: dict) -> list[tuple[str, str]]:
     return faqs
 
 
+ATELIER_ADDRESS = "KATHAI, 100 Feet Road, Indiranagar, Bengaluru"
+
+# Five-senses copy from Campaign Deck V4, slide 8 (observed).
+ATELIER_SENSES = [
+    ("Sight", "Your cup is made in front of you, from pour to finish."),
+    ("Smell", "Cocoa melting slowly, filling the room."),
+    ("Sound", "A soft soundscape of santoor, bansuri, jal tarang, celesta and piano."),
+    ("Touch", "A warm ceramic cup and a slow, velvety texture."),
+    ("Taste", "Taste, compare and create a melt of your own."),
+]
+
 FAMILY_FAQS = [
     ("Is Kathai good for a family outing?",
      "Yes — the Kathai Atelier is a 90-minute guided hot chocolate session "
@@ -51,6 +62,154 @@ FAMILY_FAQS = [
      "and Moss suit explorers, and Red Noir suits dessert lovers — so a "
      "group can mix across the range."),
 ]
+
+
+# ------------------------------------------------- intent personalization
+# Each facet contributes: a hero line (first matching facet wins), an
+# above-the-fold occasion section, and FAQs that go first in FAQPage schema.
+# Copy is restated from observed brand material only. Atelier price and
+# session timings are unconfirmed in the deck, so neither is rendered.
+
+def _moments(p): return ", ".join(m.lower() for m in p["best_moment"])
+
+
+def _atelier_section(heading: str) -> str:
+    senses = "".join(f"<li><strong>{s}</strong> — {t}</li>" for s, t in ATELIER_SENSES)
+    return f"""
+<section class="occasion"><h2>{heading}</h2>
+<p>A 90-minute guided hot chocolate experience for up to 15 guests at
+{ATELIER_ADDRESS}. Everyone — from the cautious sipper to the flavour
+explorer — tastes, compares and creates a melt of their own.</p>
+<ul class="senses">{senses}</ul>
+<p><em>Weekend sessions · booking details on request.</em></p></section>"""
+
+
+def _section(heading: str, body: str) -> str:
+    return f'\n<section class="occasion"><h2>{heading}</h2>{body}</section>'
+
+
+def _family(p):
+    hero = (f"Bringing the whole crew? {p['name']} is the cup everyone can agree on — "
+            "and the Atelier turns it into an experience you do together."
+            if "Crowd Favourite" in p["tags"] else
+            f"Bringing the whole crew? Put {p['name']} ({p['taste_profile'].lower()}) "
+            "on the table and let everyone mix across the range.")
+    return hero, ("atelier", "Make it a family moment — The KATHAI Atelier"), FAMILY_FAQS
+
+
+def _experience(p):
+    hero = f"Looking for more than a cup? Taste {p['name']} the way it's made — at the KATHAI Atelier."
+    faq = ("What happens at the KATHAI Atelier?",
+           "A 90-minute guided session for up to 15 guests at " + ATELIER_ADDRESS +
+           " that engages all five senses: " +
+           " ".join(f"{s}: {t}" for s, t in ATELIER_SENSES))
+    return hero, ("atelier", "The KATHAI Atelier — one experience, all five senses"), [faq]
+
+
+def _gift(p):
+    hero = f"Gifting this Diwali? KATHAI is a story in every cup — and {p['name']}'s is: {p['vibe']}"
+    body = (f"<p><em>Kathai</em> is the deep, rich brown of fine cacao; <em>katha</em> "
+            f"means story. {p['name']} — {p['taste_profile'].lower()} — is a cup with "
+            f"its own: {p['hook']}</p><p>To give an experience instead, the KATHAI "
+            f"Atelier runs Diwali-weekend sessions at {ATELIER_ADDRESS}. "
+            "<em>Session timings and price to be confirmed.</em></p>")
+    faq = (f"Why give {p['name']} for Diwali?",
+           f"KATHAI means a story in every cup. {p['name']} is "
+           f"{p['taste_profile'].lower()}: {p['description']}")
+    return hero, ("html", _section("A Diwali story in every cup", body)), [faq]
+
+
+def _focus(p):
+    fits = "Work Mode" in p["tags"] or {"Work", "Study"} & set(p["best_moment"])
+    hero = ("Deadline mode: this is the cup built for it." if fits else
+            f"Need to focus? {p['name']}'s best moments are {_moments(p)}.")
+    caffeine = ("<p><em>Caffeine per serving will be published once the final "
+                "formulation is confirmed.</em></p>"
+                if "caffeine_per_serving" in p.get("pending", {}) else "")
+    body = f"<p>{p['description']}</p><p><strong>The Vibe:</strong> {p['vibe']}</p>{caffeine}"
+    faq = (f"When is {p['name']} best for studying or work?",
+           f"{p['name']}'s best moments are {_moments(p)}. Chocolate intensity "
+           f"{p['intensity']}/5, body: {p['body'].lower()}.")
+    return hero, ("html", _section("Your lock-in cup", body)), [faq]
+
+
+def _calm(p):
+    hero = f"Slowing down? {p['name']}: {p['vibe']}"
+    body = (f"<p>{p['description']}</p><p>Sweetness {p['sweetness']}/5 · "
+            f"{p['body']} body · best for {_moments(p)}.</p>")
+    faq = (f"Is {p['name']} a calm, slow-moment drink?",
+           f"{p['name']} is {p['taste_profile'].lower()}, best for {_moments(p)}. {p['vibe']}")
+    return hero, ("html", _section("A slow-moment cup", body)), [faq]
+
+
+def _adventure(p):
+    heat = f" Heat {p['heat']}/3." if p.get("heat") else ""
+    hero = f"Want something different? {p['name']} sits at adventure level {p['adventure']}/5."
+    body = f"<p>{p['description']}</p><p>Adventure level {DOTS(p['adventure'])}{heat}</p>"
+    faq = (f"How adventurous is {p['name']}?",
+           f"Adventure level {p['adventure']}/5.{heat} {p['taste_profile'].title()}.")
+    return hero, ("html", _section("Something with a kick", body)), [faq]
+
+
+def _dessert(p):
+    hero = f"Dessert mode: {p['name']} — {p['taste_profile'].lower()}."
+    dessert = (p.get("serves") or {}).get("Dessert Mode")
+    extra = f"<p><strong>Dessert Mode:</strong> {dessert}</p>" if dessert else ""
+    body = f"<p>{p['description']}</p><p>Sweetness {DOTS(p['sweetness'])}</p>{extra}"
+    faq = (f"Is {p['name']} good as a dessert drink?",
+           f"Sweetness is {p['sweetness']}/5 and its best moments are {_moments(p)}."
+           + (f" Try Dessert Mode: {dessert}." if dessert else ""))
+    return hero, ("html", _section("Dessert mode", body)), [faq]
+
+
+def _fitness(p):
+    protein_pending = "protein_per_serving" in p.get("pending", {})
+    hero = (f"After the gym? {p['name']} is KATHAI's protein-oriented hot chocolate — "
+            "hitting your macros doesn't have to taste like punishment."
+            if "Protein" in p["tags"] else
+            f"After the gym? {p['name']} isn't our protein pick — Macro Melt is.")
+    note = ("<p><em>Protein per serving will be published once the final "
+            "formulation is confirmed.</em></p>" if protein_pending else "")
+    body = f"<p>{p['description']}</p><p>Best moments: {_moments(p)}.</p>{note}"
+    faq = (f"Can I have {p['name']} after a workout?",
+           f"Its best moments are {_moments(p)}."
+           + (" Protein per serving will be published once the final formulation "
+              "is confirmed." if protein_pending else ""))
+    return hero, ("html", _section("Post-workout", body)), [faq]
+
+
+def _evening(p):
+    hero = f"Evening plans? {p['name']}: {p['vibe']}"
+    body = f"<p>{p['description']}</p><p>Best moments: {_moments(p)}.</p>"
+    faq = (f"Is {p['name']} an evening drink?",
+           f"{p['name']}'s best moments are {_moments(p)}. {p['vibe']}")
+    return hero, ("html", _section("After dark", body)), [faq]
+
+
+FACET_BUILDERS = {
+    "family": _family, "experience": _experience, "gift": _gift,
+    "focus": _focus, "calm": _calm, "adventure": _adventure,
+    "dessert": _dessert, "fitness": _fitness, "evening": _evening,
+}
+
+
+def personalize(p: dict, facets: list[str]) -> tuple[str, str, list]:
+    """Return (hero_html, sections_html, intent_faqs) for the query facets."""
+    hero, sections, faqs, atelier_done, seen_q = "", [], [], False, set()
+    for f in facets:
+        h, (kind, payload), fq = FACET_BUILDERS[f](p)
+        hero = hero or f"<p class='hook personal'>{h}</p>"
+        if kind == "atelier":
+            if not atelier_done:
+                sections.append(_atelier_section(payload))
+                atelier_done = True
+        else:
+            sections.append(payload)
+        for q, a in fq:
+            if q not in seen_q:
+                seen_q.add(q)
+                faqs.append((q, a))
+    return hero, "".join(sections), faqs
 
 
 # -------------------------------------------------------------- JSON-LD
@@ -130,6 +289,8 @@ padding:12px;border-radius:8px;text-align:center;font-size:14px}
 border-radius:8px}
 .vibe{font-size:17px;font-style:italic}.tags span{display:inline-block;
 background:#efe3d2;border-radius:20px;padding:3px 12px;font-size:12px;margin:3px}
+.occasion+.occasion{margin-top:14px}.senses{margin:10px 0 10px 18px;font-size:15px}
+.personal{color:var(--choc);font-weight:600}
 footer{font-size:12px;color:#8a7762;padding:20px 24px;max-width:760px;margin:0 auto}
 """
 
@@ -164,25 +325,10 @@ def refined_page(p: dict, query: str | None = None,
     facets = facets or []
     faqs = build_faqs(p)
 
-    # ---- personalization: intent-led blocks come first
-    occasion_html = ""
-    personal_note = ""
-    if "family" in facets or "experience" in facets:
-        faqs = FAMILY_FAQS + faqs
-        occasion_html = """
-<section class="occasion"><h2>Make it a family moment — The KATHAI Atelier</h2>
-<p>A 90-minute guided hot chocolate experience for up to 15 guests at
-KATHAI, 100 Feet Road, Indiranagar, Bengaluru. Your cup is made in front of
-you, cocoa fills the room, and everyone — from the cautious sipper to the
-flavour explorer — tastes, compares and creates a melt of their own.</p>
-<p><em>Weekend sessions available · booking details on request.</em></p></section>"""
-        personal_note = (f"<p class='hook'>Bringing the whole crew? "
-                         f"{p['name']} is the cup everyone can agree on — and "
-                         f"the Atelier turns it into an experience you do "
-                         f"together.</p>")
-    if "focus" in facets and "Work Mode" in p["tags"]:
-        personal_note = ("<p class='hook'>Deadline mode: this is the cup "
-                         "built for it.</p>")
+    # ---- personalization: intent-led blocks come first (above the fold,
+    # and first in FAQPage schema)
+    personal_note, occasion_html, intent_faqs = personalize(p, facets)
+    faqs = intent_faqs + faqs
 
     serves = ""
     if p.get("serves"):

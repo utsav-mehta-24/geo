@@ -4,6 +4,7 @@
     "family",
     "experience"
   ],
+  "refreshed": true,
   "refresh_target": "salora",
   "before": {
     "query": "I want hot chocolate with my family and need an experience",
@@ -89,13 +90,13 @@
       {
         "id": "salora",
         "name": "Salora",
-        "visibility_index": 14.5,
+        "visibility_index": 12.5,
         "intent_match": 0.75,
-        "query_rank_index": 12.7,
+        "query_rank_index": 10.9,
         "breakdown": {
           "structured_data": 0,
           "faq_coverage": 0.0,
-          "answerability": 2,
+          "answerability": 0,
           "media": 2.5,
           "claim_safety": 10
         },
@@ -111,15 +112,15 @@
         "rank": 5
       },
       {
-        "id": "macro-melt",
-        "name": "Macro Melt",
-        "visibility_index": 14.5,
+        "id": "midnight-sun",
+        "name": "Midnight Sun",
+        "visibility_index": 12.5,
         "intent_match": 0.55,
-        "query_rank_index": 11.2,
+        "query_rank_index": 9.7,
         "breakdown": {
           "structured_data": 0,
           "faq_coverage": 0.0,
-          "answerability": 2,
+          "answerability": 0,
           "media": 2.5,
           "claim_safety": 10
         },
@@ -132,8 +133,8 @@
         "rank": 6
       },
       {
-        "id": "midnight-sun",
-        "name": "Midnight Sun",
+        "id": "macro-melt",
+        "name": "Macro Melt",
         "visibility_index": 12.5,
         "intent_match": 0.55,
         "query_rank_index": 9.7,
@@ -155,13 +156,13 @@
       {
         "id": "picante",
         "name": "Picante",
-        "visibility_index": 14.5,
+        "visibility_index": 12.5,
         "intent_match": 0.25,
-        "query_rank_index": 9.1,
+        "query_rank_index": 7.8,
         "breakdown": {
           "structured_data": 0,
           "faq_coverage": 0.0,
-          "answerability": 2,
+          "answerability": 0,
           "media": 2.5,
           "claim_safety": 10
         },
@@ -280,15 +281,15 @@
         "rank": 5
       },
       {
-        "id": "macro-melt",
-        "name": "Macro Melt",
-        "visibility_index": 14.5,
+        "id": "midnight-sun",
+        "name": "Midnight Sun",
+        "visibility_index": 12.5,
         "intent_match": 0.55,
-        "query_rank_index": 11.2,
+        "query_rank_index": 9.7,
         "breakdown": {
           "structured_data": 0,
           "faq_coverage": 0.0,
-          "answerability": 2,
+          "answerability": 0,
           "media": 2.5,
           "claim_safety": 10
         },
@@ -301,8 +302,8 @@
         "rank": 6
       },
       {
-        "id": "midnight-sun",
-        "name": "Midnight Sun",
+        "id": "macro-melt",
+        "name": "Macro Melt",
         "visibility_index": 12.5,
         "intent_match": 0.55,
         "query_rank_index": 9.7,
@@ -324,13 +325,13 @@
       {
         "id": "picante",
         "name": "Picante",
-        "visibility_index": 14.5,
+        "visibility_index": 12.5,
         "intent_match": 0.25,
-        "query_rank_index": 9.1,
+        "query_rank_index": 7.8,
         "breakdown": {
           "structured_data": 0,
           "faq_coverage": 0.0,
-          "answerability": 2,
+          "answerability": 0,
           "media": 2.5,
           "claim_safety": 10
         },
@@ -345,14 +346,23 @@
     ],
     "caveat": "Scores are ordinal indices derived from on-page structural signals and brand-authored copy (provenance: observed/inferred). No outcome or consumer-validated data exists; do not read these as probabilities, CTR predictions or conversion likelihoods."
   },
+  "caveat": "Scores are ordinal indices derived from on-page structural signals and brand-authored copy (provenance: observed/inferred). No outcome or consumer-validated data exists; do not read these as probabilities, CTR predictions or conversion likelihoods.",
+  "scenario_note": "Demo scenario: the 'before' site is seeded (Solé, Moss, Red Noir and Rush E have structured pages; the rest are naive copy renders). It is not a measured live site.",
+  "refresh_target_name": "Salora",
   "delta": {
     "target_rank": {
       "before": 5,
       "after": 1
     },
     "target_visibility_index": {
-      "before": 14.5,
+      "before": 12.5,
+      "after": 96.0
+    },
+    "target_query_rank_index": {
+      "before": 10.9,
       "after": 96.0
     }
-  }
+  },
+  "timing_ms": 5.68,
+  "cached": false
 }

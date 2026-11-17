@@ -51,7 +51,9 @@ def extract_signals(html: str) -> dict:
         "has_occasion_block": bool(re.search(r'class="occasion"', html)),
         "has_prep_steps": bool(re.search(r'class="prep-steps"', html)),
         "has_breadcrumb": "BreadcrumbList" in types,
-        "word_count": len(re.sub(r"<[^>]+>", " ", html).split()),
+        # visible text only — <style>/<script> are not content
+        "word_count": len(re.sub(r"<[^>]+>", " ", re.sub(
+            r"<(style|script)\b.*?</\1>", " ", html, flags=re.S)).split()),
         "html": html,
     }
 
@@ -135,33 +137,43 @@ def score_page(product_id: str, html: str) -> ScoreCard:
 # ------------------------------------------------------- intent conditioning
 
 INTENT_FACETS = {
-    "family":     {"keywords": ["family", "kids", "parents", "together", "group"],
+    "family":     {"keywords": ["family", "kids", "parents", "together", "group", "friends"],
                    "matches": {"tags": ["Comfort", "Crowd Favourite", "Dessert-Inspired", "Sweet + Salty"],
                                "best_moment": ["Anytime", "Dessert"],
                                "adventure_max": 3}},
     "experience": {"keywords": ["experience", "atelier", "session", "workshop", "event", "do together"],
                    "matches": {"atelier": True}},
-    "gift":       {"keywords": ["gift", "diwali", "present", "hamper"],
+    "gift":       {"keywords": ["gift", "gifting", "diwali", "present", "hamper", "festive"],
                    "matches": {"tags": ["Comfort", "Crowd Favourite"]}},
-    "focus":      {"keywords": ["study", "work", "deadline", "focus", "awake", "energy"],
-                   "matches": {"tags": ["Work Mode", "Espresso", "Bold"], "best_moment": ["Work", "Study"]}},
+    "focus":      {"keywords": ["study", "studying", "work", "deadline", "focus", "awake",
+                                "energy", "exam", "gaming"],
+                   "matches": {"tags": ["Work Mode", "Espresso"], "best_moment": ["Work", "Study"]}},
     "calm":       {"keywords": ["relax", "calm", "quiet", "unwind", "slow"],
-                   "matches": {"tags": ["Calm", "Ritual", "Earthy"]}},
+                   "matches": {"tags": ["Calm", "Ritual", "Earthy"], "adventure_max": 3}},
     "adventure":  {"keywords": ["spicy", "different", "new", "adventurous", "kick"],
                    "matches": {"tags": ["Adventurous", "Spicy", "Unexpected Pairing"], "adventure_min": 4}},
     "dessert":    {"keywords": ["dessert", "sweet", "treat", "indulgent"],
                    "matches": {"tags": ["Dessert", "Dessert-Inspired", "Caramel"], "sweetness_min": 3}},
     "fitness":    {"keywords": ["protein", "workout", "gym", "macros", "fitness"],
                    "matches": {"tags": ["Protein", "Post-Workout", "Functional"]}},
-    "evening":    {"keywords": ["evening", "night", "date"],
+    "evening":    {"keywords": ["evening", "night", "date", "netflix"],
                    "matches": {"tags": ["Date Night", "After Dark"], "best_moment": ["Evening"]}},
 }
 
 
+def _keyword_re(k: str) -> re.Pattern:
+    # Whole-word match (optional plural). Substring matching made "workout"
+    # trigger the focus facet via "work" — see README › Decisions.
+    return re.compile(r"\b" + re.escape(k) + r"s?\b")
+
+
+_FACET_RES = {f: [_keyword_re(k) for k in spec["keywords"]]
+              for f, spec in INTENT_FACETS.items()}
+
+
 def parse_intent(query: str) -> list[str]:
     q = query.lower()
-    return [f for f, spec in INTENT_FACETS.items()
-            if any(k in q for k in spec["keywords"])]
+    return [f for f, pats in _FACET_RES.items() if any(p.search(q) for p in pats)]
 
 
 def intent_match(product: dict, facets: list[str]) -> tuple[float, list[str]]:
@@ -195,9 +207,11 @@ def page_surfaces_experience(html: str) -> bool:
     return "Atelier" in html
 
 
-def rank(products: list[dict], pages: dict[str, str], query: str) -> dict:
+def rank(products: list[dict], pages: dict[str, str], query: str,
+         facets: list[str] | None = None) -> dict:
     """Rank product pages for a query. Returns ordered results + caveat."""
-    facets = parse_intent(query)
+    if facets is None:
+        facets = parse_intent(query)
     rows = []
     for prod in products:
         html = pages[prod["id"]]
