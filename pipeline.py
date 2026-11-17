@@ -34,8 +34,10 @@ BEFORE_PAGES = {
 
 
 def pick_target(results: list[dict]) -> dict:
-    """Best intent fit; ties broken by current rank (the weaker page first)."""
-    return min(results, key=lambda r: (-r["intent_match"], -r["rank"]))
+    """Best intent fit. Ties go to the crowd favourite (a safe pick for a vague
+    query like "something for my event"), then to the weaker page."""
+    return min(results, key=lambda r: (-r["intent_match"],
+                                       DEFAULT_TAG not in BY_ID[r["id"]]["tags"], -r["rank"]))
 
 
 DEFAULT_TAG = "Crowd Favourite"     # fallback flavour when nothing else picks one

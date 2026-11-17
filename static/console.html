@@ -208,16 +208,13 @@ async function generate() {
     if (r.refreshed) renderAfter(r); else clearAfter();
     shownQuery = text; $("stale").hidden = true;
     $("caveat").textContent = r.scenario_note + " " + r.caveat;
-    $("status").textContent = r.refreshed ? `After page ready in ${(r.timing_ms / 1000).toFixed(1)} s · ` + sourceText(r.content) : r.note;
+    $("status").textContent = r.refreshed ? [`After page ready in ${(r.timing_ms / 1000).toFixed(1)} s`, sourceText(r.content)].filter(Boolean).join(" · ") : r.note;
   } catch (e) { if (my === seq) { stopLoading(); clearAfter(); $("status").textContent = "Request failed: " + e.message; } }
   finally { if (my === seq) setBusy(false); }
 }
 
 function sourceText(c) {
-  if (c.source === "ai") return {
-    new: "AI-written copy, newly generated for this query",
-    exact: "AI variant reused — exact same query seen before",
-  }[c.match] + ` · ${c.model}`;
+  if (c.source === "ai") return c.match === "exact" ? "" : `AI-written copy, newly generated for this query · ${c.model}`;
   return "Template content — " + (c.ai_error ? "AI failed: " + c.ai_error.slice(0, 140) : c.reason || "AI off");
 }
 

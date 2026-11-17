@@ -62,6 +62,11 @@ class AIError(Exception):
     pass
 
 
+class QuotaExhausted(AIError):
+    """OpenRouter's daily free-model quota is used up: every free model will
+    fail the same way, so stop trying the rest of the chain."""
+
+
 def _post(path: str, payload: dict, timeout: float) -> dict:
     req = urllib.request.Request(
         API + path, data=json.dumps(payload).encode("utf-8"), method="POST",
@@ -72,6 +77,8 @@ def _post(path: str, payload: dict, timeout: float) -> dict:
             return json.loads(r.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
         body = e.read().decode("utf-8", "replace")[:300]
+        if e.code == 429 and "per-day" in body:
+            raise QuotaExhausted(f"OpenRouter daily free-model limit reached: {body}") from None
         raise AIError(f"OpenRouter HTTP {e.code}: {body}") from None
     except (urllib.error.URLError, TimeoutError) as e:
         raise AIError(f"OpenRouter unreachable: {e}") from None
@@ -283,6 +290,8 @@ def _generate_copy(p: dict, facets: list[str], query: str) -> tuple[dict, dict, 
         try:
             v, usage = generate_copy_with(model, p, facets, query)
             return v, usage, model
+        except QuotaExhausted:
+            raise
         except AIError as e:
             errors.append(str(e)[:160])
     raise AIError("all text models failed: " + " | ".join(errors))
@@ -372,6 +381,8 @@ def pick_flavour(query: str, products: list[dict]) -> dict:
                     _write(PICKS_FILE, store)
                 return pick
             errors.append(f"{model}: invalid pick")
+        except QuotaExhausted:
+            raise
         except (AIError, json.JSONDecodeError, AttributeError) as e:
             errors.append(f"{model}: {str(e)[:120]}")
     raise AIError("flavour pick failed: " + " | ".join(errors))
