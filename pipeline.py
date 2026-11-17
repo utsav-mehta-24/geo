@@ -14,7 +14,7 @@ from functools import lru_cache
 import ai
 from generator import baseline_page, refined_page
 from provenance import readiness_caveat
-from ranking import parse_intent, rank
+from ranking import parse_intent, rank, wanted
 
 HERE = pathlib.Path(__file__).parent
 DATA = json.loads((HERE / "data" / "products.json").read_text(encoding="utf-8"))
@@ -38,20 +38,38 @@ def pick_target(results: list[dict]) -> dict:
     return min(results, key=lambda r: (-r["intent_match"], -r["rank"]))
 
 
+DEFAULT_TAG = "Crowd Favourite"     # fallback flavour when nothing else picks one
 GENERIC = {"chocolate", "dark chocolate", "protein blend"}
 # A flavour named in the query, by product name or a defining ingredient.
-EXTRA_MENTIONS = {"macro-melt": ["protein"], "picante": ["chili"], "rush-e": ["coffee"]}
-MENTIONS = {p["id"]: [p["name"].lower(), p["id"].replace("-", " ")]
-            + [c.lower().replace(" zest", "") for c in p["composition"] if c.lower() not in GENERIC]
-            + EXTRA_MENTIONS.get(p["id"], [])
+# Solé is matched only with its accent: plain "sole" is an ordinary English word.
+EXTRA_MENTIONS = {"macro-melt": ["protein"], "picante": ["chili", "chillies", "chilies"],
+                  "rush-e": ["coffee"], "red-noir": ["strawberries", "berries"]}
+MENTIONS = {p["id"]: sorted({p["name"].lower(), p["id"].replace("-", " "), p["id"]} - {"sole"}
+                            | {c.lower().replace(" zest", "") for c in p["composition"]
+                               if c.lower() not in GENERIC}
+                            | set(EXTRA_MENTIONS.get(p["id"], [])))
             for p in PRODUCTS}
 _MENTION_RES = {pid: [re.compile(r"\b" + re.escape(k) + r"s?\b") for k in ks]
                 for pid, ks in MENTIONS.items()}
 
+# "orange-themed party", "orange colour": the colour, not the flavour
+_NOT_FLAVOUR_AFTER = ("-themed", " themed", " colour", " color", " coloured", " colored",
+                      " dress", " decor")
 
-def named_products(query: str) -> set[str]:
+
+def named_products(query: str) -> tuple[set[str], set[str]]:
+    """(asked for, ruled out): flavours named by name or ingredient. A negated
+    mention ("no matcha", "protein-free") rules the flavour out; a non-flavour
+    use ("orange-themed") is ignored."""
     q = query.lower()
-    return {pid for pid, pats in _MENTION_RES.items() if any(p.search(q) for p in pats)}
+    wants, rejects = set(), set()
+    for pid, pats in _MENTION_RES.items():
+        for pat in pats:
+            for m in pat.finditer(q):
+                if q[m.end():].startswith(_NOT_FLAVOUR_AFTER):
+                    continue
+                (wants if wanted(q, m) else rejects).add(pid)
+    return wants, rejects - wants
 
 
 @lru_cache(maxsize=256)
@@ -69,7 +87,7 @@ def run(query: str, use_ai: bool = True) -> tuple[dict, dict[str, str]]:
     """Run the pipeline for one query. Returns (report, pages_after).
 
     With use_ai and a key configured, the target page's personalised copy
-    comes from the AI variant store (exact/similar queries reuse a
+    comes from the AI variant store (an exact repeat of a query reuses its
     variant). If AI is off or fails, the deterministic template is used and the
     report's content_source says why.
     """
@@ -79,11 +97,31 @@ def run(query: str, use_ai: bool = True) -> tuple[dict, dict[str, str]]:
     before = copy.deepcopy(before)
     # The customer named a flavour or its ingredient ("matcha", "chilli"): that
     # page is the one to personalise, even if another fits the facets better.
-    named = named_products(query)
-    if named and target_id not in named:
+    # A flavour they ruled out ("no matcha") is never the one personalised.
+    named, ruled_out = named_products(query)
+    if (named and target_id not in named) or target_id in ruled_out:
         if not facets:
             before = rank(PRODUCTS, BEFORE_PAGES, "", [])
-        target_id = pick_target([r for r in before["results"] if r["id"] in named])["id"]
+        pool = [r for r in before["results"] if r["id"] in named] or \
+               [r for r in before["results"] if r["id"] not in ruled_out]
+        target_id = pick_target(pool)["id"] if (named or facets) and pool else None
+    # Nothing recognised ("something for my spontaneous plan"): every query
+    # still gets a flavour — the AI picks the closest one, else the crowd
+    # favourite. A flavour the customer ruled out is never chosen.
+    picked_by = None
+    if not target_id:
+        options = [p for p in PRODUCTS if p["id"] not in ruled_out] or PRODUCTS
+        if use_ai and ai.enabled():
+            try:
+                target_id, picked_by = ai.pick_flavour(query, options)["id"], "ai"
+            except ai.AIError:
+                pass
+        if not target_id:
+            target_id = next((p["id"] for p in options if DEFAULT_TAG in p["tags"]),
+                             options[0]["id"])
+            picked_by = "default"
+        if not facets:
+            before = rank(PRODUCTS, BEFORE_PAGES, "", [])
     after, page, content = None, None, {"source": "none"}
     if target_id:
         prod, variant = BY_ID[target_id], None
@@ -113,6 +151,7 @@ def run(query: str, use_ai: bool = True) -> tuple[dict, dict[str, str]]:
         "content": content,
         "caveat": readiness_caveat(),
         "scenario_note": SCENARIO_NOTE,
+        "target_picked_by": picked_by or ("named" if target_id in named else "intent"),
     }
     for r in (report["before"], report["after"]):
         r["query"] = query

@@ -205,9 +205,21 @@ _FACET_RES = {f: [_keyword_re(k) for k in spec["keywords"]]
               for f, spec in INTENT_FACETS.items()}
 
 
+# A keyword right after a negation ("no matcha", "not spicy", "don't drink coffee")
+# or followed by "-free" ("protein-free") is something the customer does NOT want.
+NEGATED_BEFORE = re.compile(r"\b(no|not|non|without|never|avoid|hate|dislike|don'?t|doesn'?t|"
+                            r"can'?t|won'?t|isn'?t|zero|minus)\b(\s+\w+){0,2}\s*$")
+NEGATED_AFTER = ("-free", " free")
+
+
+def wanted(q: str, m: re.Match) -> bool:
+    return not (NEGATED_BEFORE.search(q[:m.start()]) or q[m.end():].startswith(NEGATED_AFTER))
+
+
 def parse_intent(query: str) -> list[str]:
     q = query.lower()
-    facets = [f for f, pats in _FACET_RES.items() if any(p.search(q) for p in pats)]
+    facets = [f for f, pats in _FACET_RES.items()
+              if any(wanted(q, m) for p in pats for m in p.finditer(q))]
     # "late night coding": the night is when, the work is what — don't let
     # the evening facet pull a work query toward the after-dark flavours.
     if "focus" in facets and "evening" in facets:

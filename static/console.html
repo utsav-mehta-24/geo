@@ -201,7 +201,7 @@ function stopLoading() {
 async function generate() {
   const text = q.value.trim(); if (!text) { q.focus(); return; }
   const my = ++seq; setBusy(true); startLoading();
-  $("status").textContent = "Generating… (a new AI variant can take ~10–40 s; repeated or similar queries are faster)";
+  $("status").textContent = "Generating… (a new AI variant can take ~10–40 s; repeating the exact same query is faster)";
   try { const [r] = await Promise.all([fetchReport(text), delay(MIN_LOADING_MS)]); if (my !== seq) return;
     stopLoading();
     renderBefore(r); renderSummary(r, r.refreshed);
@@ -217,7 +217,6 @@ function sourceText(c) {
   if (c.source === "ai") return {
     new: "AI-written copy, newly generated for this query",
     exact: "AI variant reused — exact same query seen before",
-    similar: `AI variant reused — similar query (word overlap ${Math.round(c.similarity * 100)}%)`,
   }[c.match] + ` · ${c.model}`;
   return "Template content — " + (c.ai_error ? "AI failed: " + c.ai_error.slice(0, 140) : c.reason || "AI off");
 }
