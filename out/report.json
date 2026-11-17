@@ -14,80 +14,6 @@
     ],
     "results": [
       {
-        "id": "red-noir",
-        "name": "Red Noir",
-        "visibility_index": 73.5,
-        "intent_match": 0.65,
-        "query_rank_index": 60.6,
-        "breakdown": {
-          "structured_data": 26,
-          "faq_coverage": 15.0,
-          "answerability": 20,
-          "media": 2.5,
-          "claim_safety": 10
-        },
-        "reasons": [
-          "family: moment match"
-        ],
-        "notes": [],
-        "provenance": "inferred",
-        "rank": 1
-      },
-      {
-        "id": "rush-e",
-        "name": "Rush E",
-        "visibility_index": 73.5,
-        "intent_match": 0.55,
-        "query_rank_index": 57.0,
-        "breakdown": {
-          "structured_data": 26,
-          "faq_coverage": 15.0,
-          "answerability": 20,
-          "media": 2.5,
-          "claim_safety": 10
-        },
-        "reasons": [],
-        "notes": [],
-        "provenance": "inferred",
-        "rank": 2
-      },
-      {
-        "id": "sole",
-        "name": "Solé",
-        "visibility_index": 73.5,
-        "intent_match": 0.25,
-        "query_rank_index": 45.9,
-        "breakdown": {
-          "structured_data": 26,
-          "faq_coverage": 15.0,
-          "answerability": 20,
-          "media": 2.5,
-          "claim_safety": 10
-        },
-        "reasons": [],
-        "notes": [],
-        "provenance": "inferred",
-        "rank": 3
-      },
-      {
-        "id": "moss",
-        "name": "Moss",
-        "visibility_index": 73.5,
-        "intent_match": 0.25,
-        "query_rank_index": 45.9,
-        "breakdown": {
-          "structured_data": 26,
-          "faq_coverage": 15.0,
-          "answerability": 20,
-          "media": 2.5,
-          "claim_safety": 10
-        },
-        "reasons": [],
-        "notes": [],
-        "provenance": "inferred",
-        "rank": 4
-      },
-      {
         "id": "salora",
         "name": "Salora",
         "visibility_index": 12.5,
@@ -109,7 +35,30 @@
           "no FAQ schema — answer engines get nothing quotable"
         ],
         "provenance": "inferred",
-        "rank": 5
+        "rank": 1
+      },
+      {
+        "id": "red-noir",
+        "name": "Red Noir",
+        "visibility_index": 12.5,
+        "intent_match": 0.65,
+        "query_rank_index": 10.3,
+        "breakdown": {
+          "structured_data": 0,
+          "faq_coverage": 0.0,
+          "answerability": 0,
+          "media": 2.5,
+          "claim_safety": 10
+        },
+        "reasons": [
+          "family: moment match"
+        ],
+        "notes": [
+          "no Product JSON-LD",
+          "no FAQ schema — answer engines get nothing quotable"
+        ],
+        "provenance": "inferred",
+        "rank": 2
       },
       {
         "id": "midnight-sun",
@@ -130,7 +79,28 @@
           "no FAQ schema — answer engines get nothing quotable"
         ],
         "provenance": "inferred",
-        "rank": 6
+        "rank": 3
+      },
+      {
+        "id": "rush-e",
+        "name": "Rush E",
+        "visibility_index": 12.5,
+        "intent_match": 0.55,
+        "query_rank_index": 9.7,
+        "breakdown": {
+          "structured_data": 0,
+          "faq_coverage": 0.0,
+          "answerability": 0,
+          "media": 2.5,
+          "claim_safety": 10
+        },
+        "reasons": [],
+        "notes": [
+          "no Product JSON-LD",
+          "no FAQ schema — answer engines get nothing quotable"
+        ],
+        "provenance": "inferred",
+        "rank": 4
       },
       {
         "id": "macro-melt",
@@ -138,6 +108,48 @@
         "visibility_index": 12.5,
         "intent_match": 0.55,
         "query_rank_index": 9.7,
+        "breakdown": {
+          "structured_data": 0,
+          "faq_coverage": 0.0,
+          "answerability": 0,
+          "media": 2.5,
+          "claim_safety": 10
+        },
+        "reasons": [],
+        "notes": [
+          "no Product JSON-LD",
+          "no FAQ schema — answer engines get nothing quotable"
+        ],
+        "provenance": "inferred",
+        "rank": 5
+      },
+      {
+        "id": "sole",
+        "name": "Solé",
+        "visibility_index": 12.5,
+        "intent_match": 0.25,
+        "query_rank_index": 7.8,
+        "breakdown": {
+          "structured_data": 0,
+          "faq_coverage": 0.0,
+          "answerability": 0,
+          "media": 2.5,
+          "claim_safety": 10
+        },
+        "reasons": [],
+        "notes": [
+          "no Product JSON-LD",
+          "no FAQ schema — answer engines get nothing quotable"
+        ],
+        "provenance": "inferred",
+        "rank": 6
+      },
+      {
+        "id": "moss",
+        "name": "Moss",
+        "visibility_index": 12.5,
+        "intent_match": 0.25,
+        "query_rank_index": 7.8,
         "breakdown": {
           "structured_data": 0,
           "faq_coverage": 0.0,
@@ -209,76 +221,25 @@
       {
         "id": "red-noir",
         "name": "Red Noir",
-        "visibility_index": 73.5,
+        "visibility_index": 12.5,
         "intent_match": 0.65,
-        "query_rank_index": 60.6,
+        "query_rank_index": 10.3,
         "breakdown": {
-          "structured_data": 26,
-          "faq_coverage": 15.0,
-          "answerability": 20,
+          "structured_data": 0,
+          "faq_coverage": 0.0,
+          "answerability": 0,
           "media": 2.5,
           "claim_safety": 10
         },
         "reasons": [
           "family: moment match"
         ],
-        "notes": [],
+        "notes": [
+          "no Product JSON-LD",
+          "no FAQ schema — answer engines get nothing quotable"
+        ],
         "provenance": "inferred",
         "rank": 2
-      },
-      {
-        "id": "rush-e",
-        "name": "Rush E",
-        "visibility_index": 73.5,
-        "intent_match": 0.55,
-        "query_rank_index": 57.0,
-        "breakdown": {
-          "structured_data": 26,
-          "faq_coverage": 15.0,
-          "answerability": 20,
-          "media": 2.5,
-          "claim_safety": 10
-        },
-        "reasons": [],
-        "notes": [],
-        "provenance": "inferred",
-        "rank": 3
-      },
-      {
-        "id": "sole",
-        "name": "Solé",
-        "visibility_index": 73.5,
-        "intent_match": 0.25,
-        "query_rank_index": 45.9,
-        "breakdown": {
-          "structured_data": 26,
-          "faq_coverage": 15.0,
-          "answerability": 20,
-          "media": 2.5,
-          "claim_safety": 10
-        },
-        "reasons": [],
-        "notes": [],
-        "provenance": "inferred",
-        "rank": 4
-      },
-      {
-        "id": "moss",
-        "name": "Moss",
-        "visibility_index": 73.5,
-        "intent_match": 0.25,
-        "query_rank_index": 45.9,
-        "breakdown": {
-          "structured_data": 26,
-          "faq_coverage": 15.0,
-          "answerability": 20,
-          "media": 2.5,
-          "claim_safety": 10
-        },
-        "reasons": [],
-        "notes": [],
-        "provenance": "inferred",
-        "rank": 5
       },
       {
         "id": "midnight-sun",
@@ -299,7 +260,28 @@
           "no FAQ schema — answer engines get nothing quotable"
         ],
         "provenance": "inferred",
-        "rank": 6
+        "rank": 3
+      },
+      {
+        "id": "rush-e",
+        "name": "Rush E",
+        "visibility_index": 12.5,
+        "intent_match": 0.55,
+        "query_rank_index": 9.7,
+        "breakdown": {
+          "structured_data": 0,
+          "faq_coverage": 0.0,
+          "answerability": 0,
+          "media": 2.5,
+          "claim_safety": 10
+        },
+        "reasons": [],
+        "notes": [
+          "no Product JSON-LD",
+          "no FAQ schema — answer engines get nothing quotable"
+        ],
+        "provenance": "inferred",
+        "rank": 4
       },
       {
         "id": "macro-melt",
@@ -307,6 +289,48 @@
         "visibility_index": 12.5,
         "intent_match": 0.55,
         "query_rank_index": 9.7,
+        "breakdown": {
+          "structured_data": 0,
+          "faq_coverage": 0.0,
+          "answerability": 0,
+          "media": 2.5,
+          "claim_safety": 10
+        },
+        "reasons": [],
+        "notes": [
+          "no Product JSON-LD",
+          "no FAQ schema — answer engines get nothing quotable"
+        ],
+        "provenance": "inferred",
+        "rank": 5
+      },
+      {
+        "id": "sole",
+        "name": "Solé",
+        "visibility_index": 12.5,
+        "intent_match": 0.25,
+        "query_rank_index": 7.8,
+        "breakdown": {
+          "structured_data": 0,
+          "faq_coverage": 0.0,
+          "answerability": 0,
+          "media": 2.5,
+          "claim_safety": 10
+        },
+        "reasons": [],
+        "notes": [
+          "no Product JSON-LD",
+          "no FAQ schema — answer engines get nothing quotable"
+        ],
+        "provenance": "inferred",
+        "rank": 6
+      },
+      {
+        "id": "moss",
+        "name": "Moss",
+        "visibility_index": 12.5,
+        "intent_match": 0.25,
+        "query_rank_index": 7.8,
         "breakdown": {
           "structured_data": 0,
           "faq_coverage": 0.0,
@@ -351,11 +375,12 @@
     "reason": "AI disabled"
   },
   "caveat": "Scores are ordinal indices derived from on-page structural signals and brand-authored copy (provenance: observed/inferred). No outcome or consumer-validated data exists; do not read these as probabilities, CTR predictions or conversion likelihoods.",
-  "scenario_note": "Demo scenario: the 'before' site is seeded (Solé, Moss, Red Noir and Rush E have structured pages; the rest are naive copy renders). It is not a measured live site.",
+  "scenario_note": "Demo scenario: every 'before' page is a plain render of the brand copy. It is not a measured live site.",
+  "target_picked_by": "intent",
   "refresh_target_name": "Salora",
   "delta": {
     "target_rank": {
-      "before": 5,
+      "before": 1,
       "after": 1
     },
     "target_visibility_index": {
@@ -367,6 +392,6 @@
       "after": 83.5
     }
   },
-  "timing_ms": 5.69,
+  "timing_ms": 5.06,
   "cached": false
 }

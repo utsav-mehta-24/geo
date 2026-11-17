@@ -22,15 +22,11 @@ PRODUCTS = DATA["products"]
 BY_ID = {p["id"]: p for p in PRODUCTS}
 
 # Seeded "before" site — a demo scenario, NOT fetched from a live site.
-PRE_OPTIMIZED = {"rush-e", "red-noir", "moss", "sole"}
+# Every flavour starts as the plain copy render; only the after page is built out.
 SCENARIO_NOTE = (
-    "Demo scenario: the 'before' site is seeded (Solé, Moss, Red Noir and Rush E "
-    "have structured pages; the rest are naive copy renders). It is not a "
-    "measured live site.")
-BEFORE_PAGES = {
-    p["id"]: refined_page(p) if p["id"] in PRE_OPTIMIZED else baseline_page(p)
-    for p in PRODUCTS
-}
+    "Demo scenario: every 'before' page is a plain render of the brand copy. "
+    "It is not a measured live site.")
+BEFORE_PAGES = {p["id"]: baseline_page(p) for p in PRODUCTS}
 
 
 def pick_target(results: list[dict]) -> dict:

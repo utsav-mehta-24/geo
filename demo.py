@@ -1,8 +1,7 @@
 """Demo (batch): run one query end to end and write before/after pages.
 
-BEFORE state (seeded, realistic heterogeneous site — a demo scenario):
-  - Rush E, Red Noir, Moss and Solé already have structurally refined pages.
-  - Everything else, including Salora, is a naive render of the docx copy.
+BEFORE state (seeded — a demo scenario):
+  - Every flavour page is a plain render of the docx copy.
 AFTER state:
   - The pipeline picks the best intent-fit product, regenerates its page
     personalized to the query, and re-ranks. Only that one page changes.
