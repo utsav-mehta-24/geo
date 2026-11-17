@@ -6,12 +6,46 @@ JSON-LD (café pricing is a synthetic model, Atelier price is unconfirmed —
 rule 2: never default to the optimistic value). No ratings/reviews exist, so
 none are fabricated.
 """
+import base64
 import html
 import json
+import pathlib
 
 DOTS = lambda n: "●" * n + "○" * (5 - n)
 
 BASE_URL = "https://kathai.example"   # placeholder domain
+
+# ------------------------------------------------------------------ images
+# images/<flavour-id>/ holds the flavour's artwork. A file named after a slot
+# (hero.jpg) is used for that slot; otherwise the folder's one shared image
+# (photos win over the SVG illustration) is used for every slot.
+IMAGES = pathlib.Path(__file__).parent / "images"
+IMAGE_TYPES = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png",
+               ".webp": "image/webp", ".svg": "image/svg+xml"}
+
+
+def flavour_image(pid: str, slot: str) -> tuple[bytes, str] | None:
+    folder = IMAGES / pid
+    if not folder.is_dir():
+        return None
+    for ext, ctype in IMAGE_TYPES.items():
+        path = folder / f"{slot}{ext}"
+        if path.is_file():
+            return path.read_bytes(), ctype
+    files = [f for f in folder.iterdir() if f.is_file() and f.suffix.lower() in IMAGE_TYPES]
+    for path in sorted(files, key=lambda f: (f.suffix.lower() == ".svg", f.name)):
+        return path.read_bytes(), IMAGE_TYPES[path.suffix.lower()]
+    return None
+
+
+def image_src(pid: str, slot: str) -> str:
+    """Embed the image in the page as a data URI, so before/after pages show it
+    wherever the HTML is opened (server, console iframe, saved out/ files)."""
+    found = flavour_image(pid, slot)
+    if not found:
+        return f"/page/img/{pid}-{slot}.jpg"
+    data, ctype = found
+    return f"data:{ctype};base64,{base64.b64encode(data).decode('ascii')}"
 
 
 # ----------------------------------------------------------------- FAQ build
@@ -309,7 +343,7 @@ footer{font-size:12px;color:#8a7762;padding:20px 24px;max-width:760px;margin:0 a
 
 
 def img(p: dict, variant: str, alt: str, src: str | None = None) -> str:
-    src = src or f"img/{p['id']}-{variant}.jpg"
+    src = src or image_src(p["id"], variant)
     return f'<img src="{src}" alt="{html.escape(alt)}" loading="lazy">'
 
 

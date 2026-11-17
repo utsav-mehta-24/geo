@@ -7,6 +7,7 @@ uncached request genuinely regenerates and re-scores the page.
 import copy
 import json
 import pathlib
+import re
 import time
 from functools import lru_cache
 
@@ -37,6 +38,22 @@ def pick_target(results: list[dict]) -> dict:
     return min(results, key=lambda r: (-r["intent_match"], -r["rank"]))
 
 
+GENERIC = {"chocolate", "dark chocolate", "protein blend"}
+# A flavour named in the query, by product name or a defining ingredient.
+EXTRA_MENTIONS = {"macro-melt": ["protein"], "picante": ["chili"], "rush-e": ["coffee"]}
+MENTIONS = {p["id"]: [p["name"].lower(), p["id"].replace("-", " ")]
+            + [c.lower().replace(" zest", "") for c in p["composition"] if c.lower() not in GENERIC]
+            + EXTRA_MENTIONS.get(p["id"], [])
+            for p in PRODUCTS}
+_MENTION_RES = {pid: [re.compile(r"\b" + re.escape(k) + r"s?\b") for k in ks]
+                for pid, ks in MENTIONS.items()}
+
+
+def named_products(query: str) -> set[str]:
+    q = query.lower()
+    return {pid for pid, pats in _MENTION_RES.items() if any(p.search(q) for p in pats)}
+
+
 @lru_cache(maxsize=256)
 def _before_for_facets(facets: tuple[str, ...]):
     before = rank(PRODUCTS, BEFORE_PAGES, "", list(facets))
@@ -60,6 +77,13 @@ def run(query: str, use_ai: bool = True) -> tuple[dict, dict[str, str]]:
     facets = tuple(parse_intent(query))
     before, target_id = _before_for_facets(facets)
     before = copy.deepcopy(before)
+    # The customer named a flavour or its ingredient ("matcha", "chilli"): that
+    # page is the one to personalise, even if another fits the facets better.
+    named = named_products(query)
+    if named and target_id not in named:
+        if not facets:
+            before = rank(PRODUCTS, BEFORE_PAGES, "", [])
+        target_id = pick_target([r for r in before["results"] if r["id"] in named])["id"]
     after, page, content = None, None, {"source": "none"}
     if target_id:
         prod, variant = BY_ID[target_id], None

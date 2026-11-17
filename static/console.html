@@ -146,12 +146,7 @@ function renderSummary(r, withAfter) {
   if (!r.refreshed) { s.appendChild(el("div", r.note, "stat")); return; }
   const d = r.delta;
   s.appendChild(stat("Best-fit flavour", r.refresh_target_name));
-  if (withAfter) {
-    s.appendChild(stat("Rank for this query", d.target_rank.before, d.target_rank.after));
-    s.appendChild(stat("Query index", d.target_query_rank_index.before, d.target_query_rank_index.after));
-  } else {
-    s.appendChild(stat("Current rank", d.target_rank.before));
-  }
+  if (!withAfter) s.appendChild(stat("Current rank", d.target_rank.before));
 }
 
 function renderBefore(r) {

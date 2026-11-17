@@ -17,7 +17,6 @@ Personalized variants keep <link rel="canonical"> on the base product URL, so
 answer engines and crawlers treat them as one page, not duplicates.
 """
 import argparse
-import html
 import json
 import pathlib
 import re
@@ -26,32 +25,14 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, quote, urlparse
 
 import ai
+from generator import flavour_image   # pages embed images inline; this route serves them by URL
 from pipeline import BEFORE_PAGES, BY_ID, run
 
 MAX_QUERY = 300
 IMG_RE = re.compile(r"^/page/img/([a-z0-9-]+)-(pack|hero|ingredients|lifestyle|texture|prep)\.jpg$")
 PAGE_RE = re.compile(r"^/page/([a-z0-9-]+)/?$")
-VARIANT_LABEL = {"pack": "Packaging shot", "hero": "Beverage hero shot",
-                 "ingredients": "Ingredient story", "lifestyle": "Mood / lifestyle",
-                 "texture": "Texture shot", "prep": "Preparation visual"}
 
 
-def placeholder_svg(pid: str, variant: str) -> bytes:
-    """Stand-in for the six-part visual standard until real assets exist."""
-    name = html.escape(BY_ID[pid]["name"]) if pid in BY_ID else "KATHAI"
-    label = VARIANT_LABEL[variant]
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-<rect width="300" height="300" fill="#e8dccb"/>
-<text x="150" y="140" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#3b2314">{name}</text>
-<text x="150" y="172" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#8a6a4a">{label}</text>
-<text x="150" y="196" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#a08a72">placeholder asset</text>
-</svg>""".encode("utf-8")
-
-
-def flavour_art(pid: str) -> bytes | None:
-    """Return the bespoke flavour illustration used across that product's image slots."""
-    path = pathlib.Path(__file__).parent / "static" / "flavours" / f"{pid}.svg"
-    return path.read_bytes() if path.is_file() else None
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -104,10 +85,10 @@ class Handler(BaseHTTPRequestHandler):
 
         m = IMG_RE.match(path)
         if m:
-            art = flavour_art(m.group(1))
-            if art:
-                return self._send(200, art, "image/svg+xml; charset=utf-8")
-            return self._send(200, placeholder_svg(*m.groups()), "image/svg+xml")
+            found = flavour_image(*m.groups())
+            if found:
+                return self._send(200, *found)
+            return self._json(404, {"error": f"no image at images/{m.group(1)}/{m.group(2)}.*"})
 
         m = PAGE_RE.match(path)
         if m:
