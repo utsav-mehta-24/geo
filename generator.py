@@ -330,14 +330,12 @@ margin:10px 0;border-radius:0 8px 8px 0}
 .occasion h2{color:var(--gold);border-color:var(--gold)}
 .prep-steps{display:flex;gap:12px}.prep-steps div{flex:1;background:#fff;
 padding:12px;border-radius:8px;text-align:center;font-size:14px}
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.gallery img{width:100%;aspect-ratio:1;object-fit:cover;background:#e8dccb;
+.gallery img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#e8dccb;
 border-radius:8px}
 .vibe{font-size:17px;font-style:italic}.tags span{display:inline-block;
 background:#efe3d2;border-radius:20px;padding:3px 12px;font-size:12px;margin:3px}
 .occasion+.occasion{margin-top:14px}.senses{margin:10px 0 10px 18px;font-size:15px}
 .personal{color:var(--choc);font-weight:600}.intro{font-size:17px;margin:6px 0 14px}
-.ai-note{font-size:11.5px;color:#8a7762;margin-top:6px;font-style:italic}
 footer{font-size:12px;color:#8a7762;padding:20px 24px;max-width:760px;margin:0 auto}
 """
 
@@ -374,7 +372,7 @@ def baseline_page(p: dict) -> str:
 <main>
 <p class="profile">{p['taste_profile']}</p>
 <p class="hook">{p['hook']}</p>
-{img(p, 'pack', p['seo']['image_alt'])}
+<div class="gallery">{img(p, 'hero', p['seo']['image_alt'])}</div>
 <section><p>{p['description']}</p>
 <p class="vibe"><strong>The Vibe:</strong> {p['vibe']}</p></section>
 <div class="tags">{''.join(f'<span>{t}</span>' for t in p['tags'])}</div>
@@ -395,8 +393,6 @@ def refined_page(p: dict, query: str | None = None,
         personal_note, occasion_html, intent_faqs = personalize(p, facets)
     seen = {q for q, _ in intent_faqs}
     faqs = intent_faqs + [(q, a) for q, a in faqs if q not in seen]
-    ai_note = ("<p class='ai-note'>Personalised copy on this page is "
-               "AI-generated from KATHAI's brand copy.</p>" if ai else "")
 
     serves = ""
     if p.get("serves"):
@@ -417,14 +413,7 @@ def refined_page(p: dict, query: str | None = None,
         f'<div class="answer-block"><h3>{html.escape(q)}</h3><p>{html.escape(a)}</p></div>'
         for q, a in faqs)
 
-    gallery = "".join([
-        img(p, "pack", p["seo"]["image_alt"]),
-        img(p, "hero", f"Finished cup of {p['name']} {p['composition'][0].lower()} hot chocolate showing texture and serving style"),
-        img(p, "ingredients", f"Chocolate alongside {', '.join(c.lower() for c in p['composition'][1:]) or 'cocoa'} — the {p['name']} ingredient story"),
-        img(p, "lifestyle", f"The mood of {p['name']}: {p['vibe'].rstrip('.')}"),
-        img(p, "texture", f"Close-up of {p['name']} hot chocolate texture"),
-        img(p, "prep", f"Preparing {p['name']}: open, pour, melt"),
-    ])
+    gallery = img(p, "hero", p["seo"]["image_alt"])   # one image per flavour
 
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
@@ -443,7 +432,7 @@ def refined_page(p: dict, query: str | None = None,
 <p class="hook">{p['hook']}</p>
 {personal_note}
 {occasion_html}
-<section class="gallery-wrap"><div class="gallery">{gallery}</div>{ai_note}</section>
+<section class="gallery-wrap"><div class="gallery">{gallery}</div></section>
 <section><h2>The flavour</h2><p>{p['description']}</p>
 <p class="vibe"><strong>The Vibe:</strong> {p['vibe']}</p></section>
 <section><h2>Quick taste profile</h2><table class="taste-scores">

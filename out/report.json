@@ -16,14 +16,14 @@
       {
         "id": "red-noir",
         "name": "Red Noir",
-        "visibility_index": 86.0,
+        "visibility_index": 73.5,
         "intent_match": 0.65,
-        "query_rank_index": 71.0,
+        "query_rank_index": 60.6,
         "breakdown": {
           "structured_data": 26,
           "faq_coverage": 15.0,
           "answerability": 20,
-          "media": 15.0,
+          "media": 2.5,
           "claim_safety": 10
         },
         "reasons": [
@@ -36,14 +36,14 @@
       {
         "id": "rush-e",
         "name": "Rush E",
-        "visibility_index": 86.0,
+        "visibility_index": 73.5,
         "intent_match": 0.55,
-        "query_rank_index": 66.7,
+        "query_rank_index": 57.0,
         "breakdown": {
           "structured_data": 26,
           "faq_coverage": 15.0,
           "answerability": 20,
-          "media": 15.0,
+          "media": 2.5,
           "claim_safety": 10
         },
         "reasons": [],
@@ -54,14 +54,14 @@
       {
         "id": "sole",
         "name": "Solé",
-        "visibility_index": 86.0,
+        "visibility_index": 73.5,
         "intent_match": 0.25,
-        "query_rank_index": 53.8,
+        "query_rank_index": 45.9,
         "breakdown": {
           "structured_data": 26,
           "faq_coverage": 15.0,
           "answerability": 20,
-          "media": 15.0,
+          "media": 2.5,
           "claim_safety": 10
         },
         "reasons": [],
@@ -72,14 +72,14 @@
       {
         "id": "moss",
         "name": "Moss",
-        "visibility_index": 86.0,
+        "visibility_index": 73.5,
         "intent_match": 0.25,
-        "query_rank_index": 53.8,
+        "query_rank_index": 45.9,
         "breakdown": {
           "structured_data": 26,
           "faq_coverage": 15.0,
           "answerability": 20,
-          "media": 15.0,
+          "media": 2.5,
           "claim_safety": 10
         },
         "reasons": [],
@@ -187,14 +187,14 @@
       {
         "id": "salora",
         "name": "Salora",
-        "visibility_index": 96.0,
+        "visibility_index": 83.5,
         "intent_match": 1.0,
-        "query_rank_index": 96.0,
+        "query_rank_index": 83.5,
         "breakdown": {
           "structured_data": 26,
           "faq_coverage": 20.0,
           "answerability": 25,
-          "media": 15.0,
+          "media": 2.5,
           "claim_safety": 10
         },
         "reasons": [
@@ -209,14 +209,14 @@
       {
         "id": "red-noir",
         "name": "Red Noir",
-        "visibility_index": 86.0,
+        "visibility_index": 73.5,
         "intent_match": 0.65,
-        "query_rank_index": 71.0,
+        "query_rank_index": 60.6,
         "breakdown": {
           "structured_data": 26,
           "faq_coverage": 15.0,
           "answerability": 20,
-          "media": 15.0,
+          "media": 2.5,
           "claim_safety": 10
         },
         "reasons": [
@@ -229,14 +229,14 @@
       {
         "id": "rush-e",
         "name": "Rush E",
-        "visibility_index": 86.0,
+        "visibility_index": 73.5,
         "intent_match": 0.55,
-        "query_rank_index": 66.7,
+        "query_rank_index": 57.0,
         "breakdown": {
           "structured_data": 26,
           "faq_coverage": 15.0,
           "answerability": 20,
-          "media": 15.0,
+          "media": 2.5,
           "claim_safety": 10
         },
         "reasons": [],
@@ -247,14 +247,14 @@
       {
         "id": "sole",
         "name": "Solé",
-        "visibility_index": 86.0,
+        "visibility_index": 73.5,
         "intent_match": 0.25,
-        "query_rank_index": 53.8,
+        "query_rank_index": 45.9,
         "breakdown": {
           "structured_data": 26,
           "faq_coverage": 15.0,
           "answerability": 20,
-          "media": 15.0,
+          "media": 2.5,
           "claim_safety": 10
         },
         "reasons": [],
@@ -265,14 +265,14 @@
       {
         "id": "moss",
         "name": "Moss",
-        "visibility_index": 86.0,
+        "visibility_index": 73.5,
         "intent_match": 0.25,
-        "query_rank_index": 53.8,
+        "query_rank_index": 45.9,
         "breakdown": {
           "structured_data": 26,
           "faq_coverage": 15.0,
           "answerability": 20,
-          "media": 15.0,
+          "media": 2.5,
           "claim_safety": 10
         },
         "reasons": [],
@@ -360,13 +360,13 @@
     },
     "target_visibility_index": {
       "before": 12.5,
-      "after": 96.0
+      "after": 83.5
     },
     "target_query_rank_index": {
       "before": 10.9,
-      "after": 96.0
+      "after": 83.5
     }
   },
-  "timing_ms": 12.23,
+  "timing_ms": 5.69,
   "cached": false
 }

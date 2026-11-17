@@ -100,7 +100,7 @@ animation:spin .9s linear infinite}
       <div id="stale" class="stale" hidden>The query changed. Press <b>Generate after page</b> to update.</div>
       <div id="aPlaceholder" class="placeholder">
         <p>The before page is shown on the left. Press <b>Generate after page</b> to regenerate
-        it for this query and re-rank all eight flavours.</p>
+        it for this query.</p>
         <button class="btn primary" id="gen2">Generate after page</button>
       </div>
       <div id="aLoading" class="loading" hidden role="status" aria-live="polite">
@@ -144,20 +144,18 @@ function stat(label, before, after) {
 function renderSummary(r, withAfter) {
   const s = $("summary"); s.replaceChildren();
   if (!r.refreshed) { s.appendChild(el("div", r.note, "stat")); return; }
-  const d = r.delta;
   s.appendChild(stat("Best-fit flavour", r.refresh_target_name));
-  if (!withAfter) s.appendChild(stat("Current rank", d.target_rank.before));
 }
 
 function renderBefore(r) {
   const id = targetOf(r), b = row(r.before, id);
-  $("bTitle").textContent = `${b.name} — rank ${b.rank}`;
+  $("bTitle").textContent = b.name;
   $("bFrame").src = `/page/${id}`; $("bOpen").href = `/page/${id}`;
 }
 
 function renderAfter(r) {
   const id = targetOf(r), a = row(r.after, id), url = `/page/${id}?q=${encodeURIComponent(r.query)}`;
-  $("aTitle").textContent = `${a.name} — rank ${a.rank}`;
+  $("aTitle").textContent = a.name;
   $("aFrame").src = url; $("aOpen").href = url;
   $("aOpen").hidden = false; $("aPlaceholder").hidden = true; $("aBody").hidden = false;
 }
