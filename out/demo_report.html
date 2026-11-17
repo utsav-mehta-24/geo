@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KATHAI · AI Ranking Demo — Query 1</title><style>
+body{font-family:Georgia,serif;background:#f6efe7;color:#241a12;margin:0;line-height:1.5}
+header{background:#3b2314;color:#f6efe7;padding:26px 20px}
+header .b{letter-spacing:.3em;color:#c99b5f;font-size:12px}
+h1{font-size:24px;margin:6px 0 0}main{max-width:900px;margin:0 auto;padding:20px}
+.q{background:#fff;border-left:4px solid #c99b5f;padding:12px 16px;border-radius:0 8px 8px 0;font-style:italic;font-size:17px}
+h2{border-bottom:2px solid #c99b5f;padding-bottom:5px;font-size:19px;margin-top:30px}
+table{border-collapse:collapse;width:100%;background:#fff;border-radius:8px;overflow:hidden;font-size:14px}
+th,td{padding:7px 10px;text-align:left;border-bottom:1px solid #eee4d5}
+th{background:#3b2314;color:#f6efe7;font-size:12px;letter-spacing:.05em}
+.hl{background:#f3e3c8;font-weight:bold}.sm{font-size:11px;color:#8a7762}
+.delta{display:flex;gap:12px;margin:16px 0;flex-wrap:wrap}
+.delta div{flex:1;min-width:140px;background:#3b2314;color:#f6efe7;padding:14px;border-radius:10px;text-align:center}
+.delta b{font-size:26px;color:#c99b5f;display:block}
+ul{background:#fff;padding:14px 14px 14px 32px;border-radius:8px;font-size:14px}
+.caveat{font-size:12px;color:#8a7762;border-top:1px solid #d9c9b2;margin-top:28px;padding-top:12px}
+</style></head><body>
+<header><div class="b">KATHAI · GEO PIPELINE</div><h1>AI-ranking refinement + personalized page — demo</h1></header>
+<main>
+<p class="q">Query 1: "I want hot chocolate with my family and need an experience"</p>
+<p>Parsed intent facets: <strong>family, experience</strong>.
+The pipeline scores every live product page on structural AI-visibility signals
+(JSON-LD, FAQ schema, answerability blocks, media/alt coverage, claim safety),
+conditions the ranking on query intent, picks the best-fit underperformer, and
+regenerates only that page.</p>
+<div class="delta">
+<div><b>#5 → #1</b>Salora query rank</div>
+<div><b>14.5 → 96.0</b>Visibility index</div>
+<div><b>1 page</b>regenerated — competitors untouched</div>
+</div>
+<h2>Before — current site state</h2>
+<p>Four flavours already had structured pages; Salora (best intent fit for a
+family experience: comfort, crowd favourite, anytime) was a naive copy render
+and lost on visibility.</p>
+<table><tr><th>#</th><th>Product</th><th>Query index</th><th>Visibility</th><th>Intent fit</th><th>Signal breakdown</th></tr><tr><td>1</td><td>Red Noir</td><td>71.0</td><td>86.0</td><td>0.65</td><td class="sm">SD 26 · FAQ 15.0 · ANS 20 · MED 15.0 · SAFE 10</td></tr><tr><td>2</td><td>Rush E</td><td>66.7</td><td>86.0</td><td>0.55</td><td class="sm">SD 26 · FAQ 15.0 · ANS 20 · MED 15.0 · SAFE 10</td></tr><tr><td>3</td><td>Solé</td><td>53.8</td><td>86.0</td><td>0.25</td><td class="sm">SD 26 · FAQ 15.0 · ANS 20 · MED 15.0 · SAFE 10</td></tr><tr><td>4</td><td>Moss</td><td>53.8</td><td>86.0</td><td>0.25</td><td class="sm">SD 26 · FAQ 15.0 · ANS 20 · MED 15.0 · SAFE 10</td></tr><tr class="hl"><td>5</td><td>Salora</td><td>12.7</td><td>14.5</td><td>0.75</td><td class="sm">SD 0 · FAQ 0.0 · ANS 2 · MED 2.5 · SAFE 10</td></tr><tr><td>6</td><td>Macro Melt</td><td>11.2</td><td>14.5</td><td>0.55</td><td class="sm">SD 0 · FAQ 0.0 · ANS 2 · MED 2.5 · SAFE 10</td></tr><tr><td>7</td><td>Midnight Sun</td><td>9.7</td><td>12.5</td><td>0.55</td><td class="sm">SD 0 · FAQ 0.0 · ANS 0 · MED 2.5 · SAFE 10</td></tr><tr><td>8</td><td>Picante</td><td>9.1</td><td>14.5</td><td>0.25</td><td class="sm">SD 0 · FAQ 0.0 · ANS 2 · MED 2.5 · SAFE 10</td></tr></table>
+<h2>After — Salora page regenerated for this query</h2>
+<table><tr><th>#</th><th>Product</th><th>Query index</th><th>Visibility</th><th>Intent fit</th><th>Signal breakdown</th></tr><tr class="hl"><td>1</td><td>Salora</td><td>96.0</td><td>96.0</td><td>1.0</td><td class="sm">SD 26 · FAQ 20.0 · ANS 25 · MED 15.0 · SAFE 10</td></tr><tr><td>2</td><td>Red Noir</td><td>71.0</td><td>86.0</td><td>0.65</td><td class="sm">SD 26 · FAQ 15.0 · ANS 20 · MED 15.0 · SAFE 10</td></tr><tr><td>3</td><td>Rush E</td><td>66.7</td><td>86.0</td><td>0.55</td><td class="sm">SD 26 · FAQ 15.0 · ANS 20 · MED 15.0 · SAFE 10</td></tr><tr><td>4</td><td>Solé</td><td>53.8</td><td>86.0</td><td>0.25</td><td class="sm">SD 26 · FAQ 15.0 · ANS 20 · MED 15.0 · SAFE 10</td></tr><tr><td>5</td><td>Moss</td><td>53.8</td><td>86.0</td><td>0.25</td><td class="sm">SD 26 · FAQ 15.0 · ANS 20 · MED 15.0 · SAFE 10</td></tr><tr><td>6</td><td>Macro Melt</td><td>11.2</td><td>14.5</td><td>0.55</td><td class="sm">SD 0 · FAQ 0.0 · ANS 2 · MED 2.5 · SAFE 10</td></tr><tr><td>7</td><td>Midnight Sun</td><td>9.7</td><td>12.5</td><td>0.55</td><td class="sm">SD 0 · FAQ 0.0 · ANS 0 · MED 2.5 · SAFE 10</td></tr><tr><td>8</td><td>Picante</td><td>9.1</td><td>14.5</td><td>0.25</td><td class="sm">SD 0 · FAQ 0.0 · ANS 2 · MED 2.5 · SAFE 10</td></tr></table>
+<h2>What the refresh added to the Salora page</h2>
+<ul>
+<li><strong>Product JSON-LD</strong> — brand, images, SKU, ProductGroup variant link, taste attributes. Offers/price and ratings deliberately omitted: pricing is an unvalidated model and no reviews exist.</li>
+<li><strong>FAQPage JSON-LD</strong> — 8 quotable Q&amp;As, with family/Atelier questions ranked first for this query. Questions needing unconfirmed formulation data (caffeine, protein) are excluded, not guessed.</li>
+<li><strong>Intent-led content</strong> — a family/Atelier occasion block (90-min session, 15 guests, Indiranagar) and a personalized hero line, above the fold.</li>
+<li><strong>Answerability blocks</strong> — taste scores table, OPEN→POUR→MELT prep, "Make it yours" serves.</li>
+<li><strong>Six-part visual system</strong> — pack, hero, ingredient story, mood, texture, prep — each with descriptive alt text.</li>
+<li><strong>Breadcrumb JSON-LD, canonical, Open Graph.</strong></li>
+</ul>
+<p class="caveat"><strong>Provenance:</strong> all page copy is observed
+(brand-authored, Kathai_Flavours.docx); scores are inferred.
+Scores are ordinal indices derived from on-page structural signals and brand-authored copy (provenance: observed/inferred). No outcome or consumer-validated data exists; do not read these as probabilities, CTR predictions or conversion likelihoods. The "before" state is a seeded demo scenario, not a
+measured live site.</p>
+</main></body></html>

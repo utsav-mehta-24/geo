@@ -1,0 +1,358 @@
+{
+  "query": "I want hot chocolate with my family and need an experience",
+  "parsed_intent_facets": [
+    "family",
+    "experience"
+  ],
+  "refresh_target": "salora",
+  "before": {
+    "query": "I want hot chocolate with my family and need an experience",
+    "facets": [
+      "family",
+      "experience"
+    ],
+    "results": [
+      {
+        "id": "red-noir",
+        "name": "Red Noir",
+        "visibility_index": 86.0,
+        "intent_match": 0.65,
+        "query_rank_index": 71.0,
+        "breakdown": {
+          "structured_data": 26,
+          "faq_coverage": 15.0,
+          "answerability": 20,
+          "media": 15.0,
+          "claim_safety": 10
+        },
+        "reasons": [
+          "family: moment match"
+        ],
+        "notes": [],
+        "provenance": "inferred",
+        "rank": 1
+      },
+      {
+        "id": "rush-e",
+        "name": "Rush E",
+        "visibility_index": 86.0,
+        "intent_match": 0.55,
+        "query_rank_index": 66.7,
+        "breakdown": {
+          "structured_data": 26,
+          "faq_coverage": 15.0,
+          "answerability": 20,
+          "media": 15.0,
+          "claim_safety": 10
+        },
+        "reasons": [],
+        "notes": [],
+        "provenance": "inferred",
+        "rank": 2
+      },
+      {
+        "id": "sole",
+        "name": "Solé",
+        "visibility_index": 86.0,
+        "intent_match": 0.25,
+        "query_rank_index": 53.8,
+        "breakdown": {
+          "structured_data": 26,
+          "faq_coverage": 15.0,
+          "answerability": 20,
+          "media": 15.0,
+          "claim_safety": 10
+        },
+        "reasons": [],
+        "notes": [],
+        "provenance": "inferred",
+        "rank": 3
+      },
+      {
+        "id": "moss",
+        "name": "Moss",
+        "visibility_index": 86.0,
+        "intent_match": 0.25,
+        "query_rank_index": 53.8,
+        "breakdown": {
+          "structured_data": 26,
+          "faq_coverage": 15.0,
+          "answerability": 20,
+          "media": 15.0,
+          "claim_safety": 10
+        },
+        "reasons": [],
+        "notes": [],
+        "provenance": "inferred",
+        "rank": 4
+      },
+      {
+        "id": "salora",
+        "name": "Salora",
+        "visibility_index": 14.5,
+        "intent_match": 0.75,
+        "query_rank_index": 12.7,
+        "breakdown": {
+          "structured_data": 0,
+          "faq_coverage": 0.0,
+          "answerability": 2,
+          "media": 2.5,
+          "claim_safety": 10
+        },
+        "reasons": [
+          "family: tag match ['Comfort', 'Crowd Favourite', 'Dessert-Inspired', 'Sweet + Salty']",
+          "family: moment match"
+        ],
+        "notes": [
+          "no Product JSON-LD",
+          "no FAQ schema — answer engines get nothing quotable"
+        ],
+        "provenance": "inferred",
+        "rank": 5
+      },
+      {
+        "id": "macro-melt",
+        "name": "Macro Melt",
+        "visibility_index": 14.5,
+        "intent_match": 0.55,
+        "query_rank_index": 11.2,
+        "breakdown": {
+          "structured_data": 0,
+          "faq_coverage": 0.0,
+          "answerability": 2,
+          "media": 2.5,
+          "claim_safety": 10
+        },
+        "reasons": [],
+        "notes": [
+          "no Product JSON-LD",
+          "no FAQ schema — answer engines get nothing quotable"
+        ],
+        "provenance": "inferred",
+        "rank": 6
+      },
+      {
+        "id": "midnight-sun",
+        "name": "Midnight Sun",
+        "visibility_index": 12.5,
+        "intent_match": 0.55,
+        "query_rank_index": 9.7,
+        "breakdown": {
+          "structured_data": 0,
+          "faq_coverage": 0.0,
+          "answerability": 0,
+          "media": 2.5,
+          "claim_safety": 10
+        },
+        "reasons": [],
+        "notes": [
+          "no Product JSON-LD",
+          "no FAQ schema — answer engines get nothing quotable"
+        ],
+        "provenance": "inferred",
+        "rank": 7
+      },
+      {
+        "id": "picante",
+        "name": "Picante",
+        "visibility_index": 14.5,
+        "intent_match": 0.25,
+        "query_rank_index": 9.1,
+        "breakdown": {
+          "structured_data": 0,
+          "faq_coverage": 0.0,
+          "answerability": 2,
+          "media": 2.5,
+          "claim_safety": 10
+        },
+        "reasons": [],
+        "notes": [
+          "no Product JSON-LD",
+          "no FAQ schema — answer engines get nothing quotable"
+        ],
+        "provenance": "inferred",
+        "rank": 8
+      }
+    ],
+    "caveat": "Scores are ordinal indices derived from on-page structural signals and brand-authored copy (provenance: observed/inferred). No outcome or consumer-validated data exists; do not read these as probabilities, CTR predictions or conversion likelihoods."
+  },
+  "after": {
+    "query": "I want hot chocolate with my family and need an experience",
+    "facets": [
+      "family",
+      "experience"
+    ],
+    "results": [
+      {
+        "id": "salora",
+        "name": "Salora",
+        "visibility_index": 96.0,
+        "intent_match": 1.0,
+        "query_rank_index": 96.0,
+        "breakdown": {
+          "structured_data": 26,
+          "faq_coverage": 20.0,
+          "answerability": 25,
+          "media": 15.0,
+          "claim_safety": 10
+        },
+        "reasons": [
+          "family: tag match ['Comfort', 'Crowd Favourite', 'Dessert-Inspired', 'Sweet + Salty']",
+          "family: moment match",
+          "experience: page surfaces the Atelier"
+        ],
+        "notes": [],
+        "provenance": "inferred",
+        "rank": 1
+      },
+      {
+        "id": "red-noir",
+        "name": "Red Noir",
+        "visibility_index": 86.0,
+        "intent_match": 0.65,
+        "query_rank_index": 71.0,
+        "breakdown": {
+          "structured_data": 26,
+          "faq_coverage": 15.0,
+          "answerability": 20,
+          "media": 15.0,
+          "claim_safety": 10
+        },
+        "reasons": [
+          "family: moment match"
+        ],
+        "notes": [],
+        "provenance": "inferred",
+        "rank": 2
+      },
+      {
+        "id": "rush-e",
+        "name": "Rush E",
+        "visibility_index": 86.0,
+        "intent_match": 0.55,
+        "query_rank_index": 66.7,
+        "breakdown": {
+          "structured_data": 26,
+          "faq_coverage": 15.0,
+          "answerability": 20,
+          "media": 15.0,
+          "claim_safety": 10
+        },
+        "reasons": [],
+        "notes": [],
+        "provenance": "inferred",
+        "rank": 3
+      },
+      {
+        "id": "sole",
+        "name": "Solé",
+        "visibility_index": 86.0,
+        "intent_match": 0.25,
+        "query_rank_index": 53.8,
+        "breakdown": {
+          "structured_data": 26,
+          "faq_coverage": 15.0,
+          "answerability": 20,
+          "media": 15.0,
+          "claim_safety": 10
+        },
+        "reasons": [],
+        "notes": [],
+        "provenance": "inferred",
+        "rank": 4
+      },
+      {
+        "id": "moss",
+        "name": "Moss",
+        "visibility_index": 86.0,
+        "intent_match": 0.25,
+        "query_rank_index": 53.8,
+        "breakdown": {
+          "structured_data": 26,
+          "faq_coverage": 15.0,
+          "answerability": 20,
+          "media": 15.0,
+          "claim_safety": 10
+        },
+        "reasons": [],
+        "notes": [],
+        "provenance": "inferred",
+        "rank": 5
+      },
+      {
+        "id": "macro-melt",
+        "name": "Macro Melt",
+        "visibility_index": 14.5,
+        "intent_match": 0.55,
+        "query_rank_index": 11.2,
+        "breakdown": {
+          "structured_data": 0,
+          "faq_coverage": 0.0,
+          "answerability": 2,
+          "media": 2.5,
+          "claim_safety": 10
+        },
+        "reasons": [],
+        "notes": [
+          "no Product JSON-LD",
+          "no FAQ schema — answer engines get nothing quotable"
+        ],
+        "provenance": "inferred",
+        "rank": 6
+      },
+      {
+        "id": "midnight-sun",
+        "name": "Midnight Sun",
+        "visibility_index": 12.5,
+        "intent_match": 0.55,
+        "query_rank_index": 9.7,
+        "breakdown": {
+          "structured_data": 0,
+          "faq_coverage": 0.0,
+          "answerability": 0,
+          "media": 2.5,
+          "claim_safety": 10
+        },
+        "reasons": [],
+        "notes": [
+          "no Product JSON-LD",
+          "no FAQ schema — answer engines get nothing quotable"
+        ],
+        "provenance": "inferred",
+        "rank": 7
+      },
+      {
+        "id": "picante",
+        "name": "Picante",
+        "visibility_index": 14.5,
+        "intent_match": 0.25,
+        "query_rank_index": 9.1,
+        "breakdown": {
+          "structured_data": 0,
+          "faq_coverage": 0.0,
+          "answerability": 2,
+          "media": 2.5,
+          "claim_safety": 10
+        },
+        "reasons": [],
+        "notes": [
+          "no Product JSON-LD",
+          "no FAQ schema — answer engines get nothing quotable"
+        ],
+        "provenance": "inferred",
+        "rank": 8
+      }
+    ],
+    "caveat": "Scores are ordinal indices derived from on-page structural signals and brand-authored copy (provenance: observed/inferred). No outcome or consumer-validated data exists; do not read these as probabilities, CTR predictions or conversion likelihoods."
+  },
+  "delta": {
+    "target_rank": {
+      "before": 5,
+      "after": 1
+    },
+    "target_visibility_index": {
+      "before": 14.5,
+      "after": 96.0
+    }
+  }
+}
