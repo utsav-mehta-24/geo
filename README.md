@@ -96,3 +96,4 @@ These are judgement calls made while building the live server, not measured outc
 - New query → `demo.py` with a different `QUERY`; add facets in `ranking.INTENT_FACETS`.
 - Real signals: swap the seeded before-state for fetched live pages; plug validated
   consumer data in as `Provenance.VALIDATED` when a real panel exists.
+"# geo" 
